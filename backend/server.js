@@ -24,6 +24,10 @@ app.get("/",(req, res) => {
     res.json({ message: "Welcome to CAR application." });
 });
 
+// routes
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
+
 // set port, listen for requests 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
