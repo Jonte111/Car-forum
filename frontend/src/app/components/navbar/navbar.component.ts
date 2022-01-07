@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  openDialog() {
+  openSignIn() {
       this.dialog.open(SignInComponent);
     }
 }
