@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +7,4 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AppComponent {
   title = 'frontend';
-  constructor(public dialog: MatDialog) { }
-  
-  openDiablog() {
-    this.dialog.open();
-  }
 }
