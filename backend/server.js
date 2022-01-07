@@ -48,7 +48,7 @@ db.mongoose
     process.exit();
 });
 
-
+// initial() function helps us to create 3 important rows in roles collection.
 function initial() {
     Role.estimatedDocumentCount((err, count) => {
         if(!err && count === 0) {
