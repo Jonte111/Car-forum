@@ -34,7 +34,7 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
 
-const db = require ("./app.models");
+const db = require ("./app/models");
 const dbConfig = require("./app/config/db.config");
 const Role = db.role;
 
