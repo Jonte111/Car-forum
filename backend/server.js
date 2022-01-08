@@ -39,7 +39,7 @@ const dbConfig = require("./app/config/db.config");
 const Role = db.role;
 
 db.mongoose
-.connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+.connect(`mongodb+srv://bob:123abc@car.y6ty0.mongodb.net/car_db?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
