@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="mat-elevation-z6" class="nav">
+  <a mat-button routerLink=""><span><mat-icon>directions_car</mat-icon>CAR</span></a>
+  <div class="title">Worlds biggest car forum</div>
+  <div class="spacer"></div>
+  <a mat-button routerLink="forum">FORUM</a>
+  <a mat-button routerLink="aboutus">About us</a>
+  <a mat-button (click)="openSignIn()">Sign in</a>
+  <a mat-button (click)="openRegister()">Register</a>
+  <button mat-button [matMenuTriggerFor]="menu">My profile</button>
+  <mat-menu #menu="matMenu">
+    <a mat-button routerLink="myprofile">My profile</a>
+    <br>
+    <a mat-button>Logout</a>
+  </mat-menu>
+</mat-toolbar>
