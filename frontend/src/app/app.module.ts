@@ -24,6 +24,7 @@ import { RegisterComponent } from './modals/register/register.component';
 import { SportcarsComponent } from './pages/sportcars/sportcars.component';
 import { ElectriccarsComponent } from './pages/electriccars/electriccars.component';
 import { VeterancarsComponent } from './pages/veterancars/veterancars.component';
+import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 
 
 
@@ -38,7 +39,8 @@ import { VeterancarsComponent } from './pages/veterancars/veterancars.component'
     RegisterComponent,
     SportcarsComponent,
     ElectriccarsComponent,
-    VeterancarsComponent
+    VeterancarsComponent,
+    MyprofileComponent
   ],
   imports: [
     BrowserModule,

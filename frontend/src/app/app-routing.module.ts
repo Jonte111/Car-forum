@@ -6,6 +6,7 @@ import { ForumComponent } from './pages/forum/forum.component';
 import { SportcarsComponent } from './pages/sportcars/sportcars.component';
 import { ElectriccarsComponent } from './pages/electriccars/electriccars.component';
 import { VeterancarsComponent } from './pages/veterancars/veterancars.component';
+import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'sportcars', component: SportcarsComponent},
   { path: 'electriccars', component: ElectriccarsComponent},
   { path: 'veterancars', component: VeterancarsComponent},
+  { path: 'myprofile', component: MyprofileComponent},
 ];
 
 @NgModule({
