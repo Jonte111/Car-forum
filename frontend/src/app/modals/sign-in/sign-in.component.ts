@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sign-in',
@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
+  // @Output() onSignInEvent: EventEmitter<Any> = new EventEmitter();
   username!: string;
   password!: string;
+  // onSignInEvent: any;
+  @Output() onSignInEvent: EventEmitter<Object> = new EventEmitter();
   
   constructor() { }
 
@@ -19,6 +22,16 @@ export class SignInComponent implements OnInit {
       alert("no text")
       return;
     }
-    console.log(this.username, this.password, "test")
+    // console.log(this.username, this.password, "test")
+    const newSignInEvent = {
+      username: this.username,
+      password: this.password
+    }
+
+    // this.onSignInEvent.emit(newSignInEvent);
+    this.onSignInEvent.emit(newSignInEvent);
+
+    this.username = "";
+    this.password = "";
   }
 }
