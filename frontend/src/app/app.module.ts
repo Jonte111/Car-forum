@@ -20,6 +20,9 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ForumComponent } from './pages/forum/forum.component';
 import { SignInComponent } from './modals/sign-in/sign-in.component';
 import { RegisterComponent } from './modals/register/register.component';
+import { SportcarsComponent } from './pages/sportcars/sportcars.component';
+import { ElectriccarsComponent } from './pages/electriccars/electriccars.component';
+import { VeterancarsComponent } from './pages/veterancars/veterancars.component';
 
 
 
@@ -31,7 +34,10 @@ import { RegisterComponent } from './modals/register/register.component';
     AboutUsComponent,
     ForumComponent,
     SignInComponent,
-    RegisterComponent
+    RegisterComponent,
+    SportcarsComponent,
+    ElectriccarsComponent,
+    VeterancarsComponent
   ],
   imports: [
     BrowserModule,
