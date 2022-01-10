@@ -9,12 +9,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 import { HomeComponent } from './pages/home/home.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ForumComponent } from './pages/forum/forum.component';
 import { SignInComponent } from './modals/sign-in/sign-in.component';
 import { RegisterComponent } from './modals/register/register.component';
+import { SportcarsComponent } from './pages/sportcars/sportcars.component';
+import { ElectriccarsComponent } from './pages/electriccars/electriccars.component';
+import { VeterancarsComponent } from './pages/veterancars/veterancars.component';
 
 
 
@@ -26,7 +34,10 @@ import { RegisterComponent } from './modals/register/register.component';
     AboutUsComponent,
     ForumComponent,
     SignInComponent,
-    RegisterComponent
+    RegisterComponent,
+    SportcarsComponent,
+    ElectriccarsComponent,
+    VeterancarsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +46,12 @@ import { RegisterComponent } from './modals/register/register.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
