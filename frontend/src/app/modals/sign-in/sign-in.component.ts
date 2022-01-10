@@ -19,16 +19,13 @@ export class SignInComponent implements OnInit {
 
   onSignIn() {
     if (!this.username||!this.password) {
-      alert("no text")
       return;
     }
-    // console.log(this.username, this.password, "test")
     const newSignInEvent = {
       username: this.username,
       password: this.password
     }
 
-    // this.onSignInEvent.emit(newSignInEvent);
     this.onSignInEvent.emit(newSignInEvent);
 
     this.username = "";
