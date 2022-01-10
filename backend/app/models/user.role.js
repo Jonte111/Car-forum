@@ -16,13 +16,9 @@ const User = mongoose.model(
         },
         password: {
             type: String,
-            required: true,
-            minlength: 3 // change to 8 later
         },
         confirmPassword: {
             type: String,
-            required: true,
-            minlength:8
         },
         roles: [
             {

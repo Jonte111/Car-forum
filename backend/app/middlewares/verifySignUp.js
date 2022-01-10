@@ -41,8 +41,15 @@ checkPasswords = (req, res, next) => {
     if(req.body.password != req.body.confirmPassword) {
         res.status(400).send({ message: "password not match" });
         return;
-    } else if(req.body.password == "") {
+    }
+    
+    else if(req.body.password == "") {
         res.status(500).send({ message: "Password cannot be empty"});
+        return;
+    }
+
+    else if(req.body.password.length < 8) {
+        res.status(500).send({ message: "Your password should contain at least 8 characters"});
         return;
     }
     next();
