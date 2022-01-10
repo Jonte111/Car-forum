@@ -1,3 +1,4 @@
+const { user } = require("../models");
 const db = require("../models");
 const ROLES = db.ROLES;
 const User = db.user;
@@ -36,6 +37,13 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
     });
 };
 
+checkPasswords = (req, res, next) => {
+    if(req.body.password != req.body.confirmPassword) {
+        res.status(400).send({ message: "password not match" });
+    }
+    next();
+}
+
 checkRolesExisted = (req, res, next) => {
     if(req.body.roles) {
         for(let i = 0; i < req.body.roles.length; i++) {
@@ -52,7 +60,8 @@ checkRolesExisted = (req, res, next) => {
 
 const verifySignUp = {
     checkDuplicateUsernameOrEmail,
-    checkRolesExisted
+    checkRolesExisted,
+    checkPasswords
 };
 
 module.exports = verifySignUp;
