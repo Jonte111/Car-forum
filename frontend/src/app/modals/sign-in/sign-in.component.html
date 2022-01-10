@@ -1,1 +1,11 @@
-<p>sign-in works!</p>
+<form class="sign-in-form" (ngSubmit)="onSignIn()">
+  <div class="form-control">
+    <label for="text"></label>
+    <input type="text" name="username" id="username" placeholder="Username" [(ngModel)]="username" required>
+  </div>
+  <div class="form-control">
+    <label for="text"></label>
+    <input type="password" name="password" id="password" placeholder="Password" [(ngModel)]="password" required>
+  </div>
+  <input type="submit" value="Sign in"/>
+</form>
