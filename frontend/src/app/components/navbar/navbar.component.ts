@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInComponent } from 'src/app/modals/sign-in/sign-in.component';
-
+import { RegisterComponent } from 'src/app/modals/register/register.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -15,5 +15,8 @@ export class NavbarComponent implements OnInit {
   }
   openSignIn() {
       this.dialog.open(SignInComponent);
-    }
+  }
+  openRegister() {
+    this.dialog.open(RegisterComponent);
+  }
 }

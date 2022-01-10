@@ -14,6 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ForumComponent } from './pages/forum/forum.component';
 import { SignInComponent } from './modals/sign-in/sign-in.component';
+import { RegisterComponent } from './modals/register/register.component';
 
 
 
@@ -24,7 +25,8 @@ import { SignInComponent } from './modals/sign-in/sign-in.component';
     HomeComponent,
     AboutUsComponent,
     ForumComponent,
-    SignInComponent
+    SignInComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
