@@ -4,6 +4,9 @@ const express = require("express");
 // Cross Origin Resource Sharing (CORS)
 // cors provides Express middleware to enable CORS
 const cors = require("cors");
+const dotenv = require("dotenv").config();
+
+
 
 const app = express();
 
@@ -38,8 +41,9 @@ const db = require ("./app/models");
 const dbConfig = require("./app/config/db.config");
 const Role = db.role;
 
+
 db.mongoose
-.connect(`mongodb+srv://bob:123abc@car.y6ty0.mongodb.net/car_db?retryWrites=true&w=majority`, {
+.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
