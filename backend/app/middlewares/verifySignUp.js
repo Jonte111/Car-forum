@@ -40,9 +40,10 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
 checkPasswords = (req, res, next) => {
     if(req.body.password != req.body.confirmPassword) {
         res.status(400).send({ message: "password not match" });
+        return;
     }
     next();
-}
+};
 
 checkRolesExisted = (req, res, next) => {
     if(req.body.roles) {
