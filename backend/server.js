@@ -38,7 +38,7 @@ app.listen(PORT, () => {
 });
 
 const db = require ("./app/models");
-const dbConfig = require("./app/config/db.config");
+const dbConfig = require("./app/config/db.config"); // remove later? 
 const Role = db.role;
 
 
