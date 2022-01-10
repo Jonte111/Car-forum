@@ -9,7 +9,7 @@ export class RegisterComponent implements OnInit {
   email!: string;
   username!:string;
   password!: string;
-  repeatPassword!: string;
+  confirmPassword!: string;
   @Output() onRegisterEvent: EventEmitter<Object> = new EventEmitter();
 
   constructor() { }
@@ -19,17 +19,22 @@ export class RegisterComponent implements OnInit {
 
  
   onRegister() {
+    const role = [];
+    role.push("User");
     const registerInfo = {
       email: this.email,
       username: this.username,
       password: this.password,
+      confirmPassword: this.confirmPassword,
+      role:role
     }
+    
     this.onRegisterEvent.emit(registerInfo);
 
     this.email = "",
     this.username = "",
-    this.password = ""     
-
+    this.password = "" , 
+    this.confirmPassword = ""
   }
 
 }
