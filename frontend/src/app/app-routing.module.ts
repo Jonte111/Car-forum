@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'aboutus', component: AboutUsComponent},
   { path: 'forum', component: ForumComponent},
-  { path: 'sportcars', component: SportcarsComponent},
-  { path: 'electriccars', component: ElectriccarsComponent},
-  { path: 'veterancars', component: VeterancarsComponent},
+  { path: 'forum/sportcars', component: SportcarsComponent},
+  { path: 'forum/electriccars', component: ElectriccarsComponent},
+  { path: 'forum/veterancars', component: VeterancarsComponent},
   { path: 'myprofile', component: MyprofileComponent},
 ];
 
