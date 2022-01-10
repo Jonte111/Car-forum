@@ -1,0 +1,12 @@
+.card-container{
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 50%;
+  justify-self: center;
+  text-align: center;
+}
+.forum-card{
+    justify-self: center;
+      text-align: center;
+
+}
