@@ -41,6 +41,9 @@ checkPasswords = (req, res, next) => {
     if(req.body.password != req.body.confirmPassword) {
         res.status(400).send({ message: "password not match" });
         return;
+    } else if(req.body.password == "") {
+        res.status(500).send({ message: "Password cannot be empty"});
+        return;
     }
     next();
 };
