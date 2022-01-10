@@ -19,14 +19,11 @@ export class RegisterComponent implements OnInit {
 
  
   onRegister() {
-    const role = [];
-    role.push("User");
     const registerInfo = {
       email: this.email,
       username: this.username,
       password: this.password,
-      confirmPassword: this.confirmPassword,
-      role:role
+      confirmPassword: this.confirmPassword
     }
     
     this.onRegisterEvent.emit(registerInfo);
