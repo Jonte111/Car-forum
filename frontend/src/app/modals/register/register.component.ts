@@ -1,4 +1,5 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { RegisterUserService } from 'src/app/services/register-user.service';
 
 @Component({
   selector: 'app-register',
@@ -10,15 +11,16 @@ export class RegisterComponent implements OnInit {
   username!:string;
   password!: string;
   confirmPassword!: string;
-  @Output() onRegisterEvent: EventEmitter<Object> = new EventEmitter();
-
-  constructor() { }
+  constructor(private _registerUser: RegisterUserService) { }
 
   ngOnInit(): void {
   }
 
  
   onRegister() {
+    if (!this.username || !this.email || !this.password || !this.confirmPassword) {
+      return
+    }
     const registerInfo = {
       email: this.email,
       username: this.username,
@@ -26,7 +28,10 @@ export class RegisterComponent implements OnInit {
       confirmPassword: this.confirmPassword
     }
     
-    this.onRegisterEvent.emit(registerInfo);
+    this._registerUser.signUpUser(registerInfo).subscribe(
+      res => console.log(res),
+      err => console.log(err)      
+    );
 
     this.email = "",
     this.username = "",
