@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,25 +11,29 @@ export class SignInComponent implements OnInit {
   // @Output() onSignInEvent: EventEmitter<Any> = new EventEmitter();
   username!: string;
   password!: string;
-  // onSignInEvent: any;
-  @Output() onSignInEvent: EventEmitter<Object> = new EventEmitter();
-  
-  constructor() { }
+  // @Output() onSignInEvent: EventEmitter<Object> = new EventEmitter();
+
+  constructor(private _auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
   onSignIn() {
+    
     if (!this.username||!this.password) {
       return;
     }
-    const newSignInEvent = {
-      username: this.username,
-      password: this.password
-    }
-
-    this.onSignInEvent.emit(newSignInEvent);
-
+     const newSignInEvent = {
+        username: this.username,
+        password: this.password
+     }
+    // console.log(username, password, "username, password")
+    // console.log(this.http.post<any>(this._loginUrl, { username, password }));
+    // this.onSignInEvent.emit(newSignInEvent);
+    this._auth.signInUser(newSignInEvent).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
     this.username = "";
     this.password = "";
   }

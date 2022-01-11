@@ -25,7 +25,7 @@ import { SportcarsComponent } from './pages/sportcars/sportcars.component';
 import { ElectriccarsComponent } from './pages/electriccars/electriccars.component';
 import { VeterancarsComponent } from './pages/veterancars/veterancars.component';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -55,7 +55,8 @@ import { MyprofileComponent } from './pages/myprofile/myprofile.component';
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
