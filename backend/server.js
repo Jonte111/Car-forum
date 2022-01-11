@@ -6,17 +6,14 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv").config();
 
-
-
 const app = express();
 
 let corsOptions = {
     origin: "http://localhost:4001",
     optionsSuccessStatus: 200, // For legacy browser support
-    methods: "GET, PUT"
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 // app.use(cors());
 
