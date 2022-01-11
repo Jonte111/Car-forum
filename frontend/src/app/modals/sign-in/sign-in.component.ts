@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,7 +14,8 @@ export class SignInComponent implements OnInit {
   password!: string;
   // @Output() onSignInEvent: EventEmitter<Object> = new EventEmitter();
 
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -27,11 +29,17 @@ export class SignInComponent implements OnInit {
         username: this.username,
         password: this.password
      }
-    // console.log(username, password, "username, password")
-    // console.log(this.http.post<any>(this._loginUrl, { username, password }));
-    // this.onSignInEvent.emit(newSignInEvent);
+    
     this._auth.signInUser(newSignInEvent).subscribe(
-      res => console.log(res),
+      res => {
+        console.log(res)
+        localStorage.setItem('token', res.accessToken);
+        localStorage.setItem('username', res.username);
+        console.log(res.accessToken)
+        console.log(res.username)
+        this.dialog.closeAll();
+
+      },
       err => console.log(err)
     )
     this.username = "";
