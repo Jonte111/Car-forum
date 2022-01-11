@@ -6,5 +6,10 @@
   <a mat-button routerLink="aboutus">About us</a>
   <a mat-button (click)="openSignIn()">Sign in</a>
   <a mat-button (click)="openRegister()">Register</a>
-  <a mat-button>Logout</a>
+  <button mat-button [matMenuTriggerFor]="menu">My profile</button>
+  <mat-menu #menu="matMenu">
+    <a mat-button routerLink="myprofile">My profile</a>
+    <br>
+    <a mat-button>Logout</a>
+  </mat-menu>
 </mat-toolbar>

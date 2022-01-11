@@ -1,0 +1,1 @@
+exports.allAccess = (req, res)
