@@ -11,6 +11,10 @@ export class RegisterComponent implements OnInit {
   username!:string;
   password!: string;
   confirmPassword!: string;
+  errorMessage!: string;
+  wasAnError!: boolean;
+
+
   constructor(private _registerUser: RegisterUserService) { }
 
   ngOnInit(): void {
@@ -29,8 +33,15 @@ export class RegisterComponent implements OnInit {
     }
     
     this._registerUser.signUpUser(registerInfo).subscribe(
-      res => console.log(res),
-      err => console.log(err)      
+      res => {
+        this.wasAnError = false;
+        console.log(res)
+      },
+      err => {
+        this.wasAnError = true;
+        this.errorMessage = err.error.message;
+        console.log(err,'error in register') 
+      }      
     );
 
     this.email = "",

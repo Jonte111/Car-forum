@@ -32,5 +32,6 @@
     <br>
 
     <button mat-raised-button color="primary" type="submit" value="Sign in">Register</button>
+    <mat-error *ngIf="wasAnError">{{errorMessage}}</mat-error>
   </form>
 </mat-card>
