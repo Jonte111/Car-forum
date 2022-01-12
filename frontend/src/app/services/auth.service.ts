@@ -18,5 +18,8 @@ export class AuthService {
   signedIn() {
     return !!localStorage.getItem('token')
   }
+  signOutUser() {
+    localStorage.clear();
+  }
 
 }

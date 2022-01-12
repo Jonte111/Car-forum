@@ -10,6 +10,6 @@
   <mat-menu #menu="matMenu">
     <a mat-button routerLink="myprofile">My profile</a>
     <br>
-    <a mat-button>Logout</a>
+    <a mat-button (click)="_authService.signOutUser()">Sign out</a>
   </mat-menu>
 </mat-toolbar>
