@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,12 +8,13 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  // @Output() onSignInEvent: EventEmitter<Any> = new EventEmitter();
   username!: string;
   password!: string;
-  // @Output() onSignInEvent: EventEmitter<Object> = new EventEmitter();
+  errorMessage!: string;
+  wasAnError!: boolean;
 
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -23,16 +24,28 @@ export class SignInComponent implements OnInit {
     if (!this.username||!this.password) {
       return;
     }
-     const newSignInEvent = {
+    const userToBeSignedIn = {
         username: this.username,
         password: this.password
      }
-    // console.log(username, password, "username, password")
-    // console.log(this.http.post<any>(this._loginUrl, { username, password }));
-    // this.onSignInEvent.emit(newSignInEvent);
-    this._auth.signInUser(newSignInEvent).subscribe(
-      res => console.log(res),
-      err => console.log(err)
+    
+    //Calls on signInUser in authService
+    this._auth.signInUser(userToBeSignedIn).subscribe(
+      res => {
+        //Token and username is stored in localStorage
+        console.log(res)
+        localStorage.setItem('token', res.accessToken);
+        localStorage.setItem('username', res.username);
+        console.log(res.accessToken)
+        console.log(res.username)
+        //Closes open modals
+        this.dialog.closeAll();
+      },
+      err => { 
+        this.wasAnError = true;
+        this.errorMessage = err.error.message;
+        console.log(err, ' errror in sign-in')
+      }
     )
     this.username = "";
     this.password = "";
