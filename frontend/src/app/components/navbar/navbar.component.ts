@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInComponent } from 'src/app/modals/sign-in/sign-in.component';
 import { RegisterComponent } from 'src/app/modals/register/register.component';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,7 +10,8 @@ import { RegisterComponent } from 'src/app/modals/register/register.component';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+    public _authService: AuthService) { }
 
   ngOnInit(): void {
   }
