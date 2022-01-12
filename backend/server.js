@@ -1,20 +1,11 @@
 // import express and cors modules
 // Express is for building the Rest apis
 const express = require("express");
-// Cross Origin Resource Sharing (CORS)
-// cors provides Express middleware to enable CORS
-// const cors = require("cors");
 const dotenv = require("dotenv").config();
-
 
 
 const app = express();
 
-// let corsOptions = {
-//     origin: "http://localhost:4001"
-// };
-
-// app.use(cors(corsOptions));
 
 // parse requrests of content-type - application/json
 app.use(express.json());
@@ -23,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // simple route
-app.get("/", (req, res) => {
+app.get("/",(req, res) => {
     res.json({ message: "Welcome to CAR application." });
 });
 
@@ -37,33 +28,33 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
 
-const db = require("./app/models");
+const db = require ("./app/models");
 const dbConfig = require("./app/config/db.config"); // remove later? 
 const Role = db.role;
 
 
 db.mongoose
-    .connect(process.env.MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    .then(() => {
-        console.log("Successfully connect to MongoDB.");
-        initial();
-    })
-    .catch(err => {
-        console.error("Connection error", err);
-        process.exit();
-    });
+.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => {
+    console.log("Successfully connect to MongoDB.");
+    initial();
+})
+.catch(err => {
+    console.error("Connection error", err);
+    process.exit();
+});
 
 // initial() function helps us to create 3 important rows in roles collection.
 function initial() {
     Role.estimatedDocumentCount((err, count) => {
-        if (!err && count === 0) {
+        if(!err && count === 0) {
             new Role({
                 name: "user"
             }).save(err => {
-                if (err) {
+                if(err) {
                     console.log("error", err);
                 }
 
@@ -73,7 +64,7 @@ function initial() {
             new Role({
                 name: "moderator"
             }).save(err => {
-                if (err) {
+                if(err) {
                     console.log("error", err);
                 }
 

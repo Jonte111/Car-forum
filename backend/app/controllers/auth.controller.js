@@ -5,6 +5,7 @@ const Role = db.role;
 
 let jwt = require("jsonwebtoken");
 let bcrypt = require("bcryptjs");
+const { user } = require("../models");
 
 exports.signup = (req, res) => {
     const user = new User({
@@ -108,4 +109,27 @@ exports.signin = (req, res) => {
             accessToken: token
         });
     });
+};
+
+exports.delete = (req, res) => {
+const id = req.params.id;
+
+User.findByIdAndRemove(id)
+    .then(data => {
+        if(!data) {
+            res.status(400).send({
+                message: `Cannot delete User with id=${id}. Maybe user was not found!`
+            });
+        } else {
+            res.send({
+                message: "User was deleted successfully!"
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Could not delete User with id= " + id
+        });
+    });
+
 };
