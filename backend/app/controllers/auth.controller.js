@@ -112,18 +112,24 @@ exports.signin = (req, res) => {
 };
 
 exports.delete = (req, res) => {
- User.deleteOne(req.body._id, (err, user) => {
-     if(err) {
-         if(!user) {
-             res.status(404).send({
-                message: `Not found user with id ${req.body_id}.`
-             });
-         }  else {
-             res.status(500).send({
-                message: "Could not delete User with id " + req.body_id
-             });
-         }
-     }  else res.send({ message: `User was deleted successfully!` });
- });
-   
+const id = req.params.id;
+
+User.findByIdAndRemove(id)
+    .then(data => {
+        if(!data) {
+            res.status(400).send({
+                message: `Cannot delete User with id=${id}. Maybe user was not found!`
+            });
+        } else {
+            res.send({
+                message: "User was deleted successfully!"
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Could not delete User with id= " + id
+        });
+    });
+
 };
