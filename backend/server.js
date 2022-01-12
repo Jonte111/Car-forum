@@ -1,15 +1,10 @@
 // import express and cors modules
 // Express is for building the Rest apis
 const express = require("express");
-// Cross Origin Resource Sharing (CORS)
-// cors provides Express middleware to enable CORS
-
 const dotenv = require("dotenv").config();
 
 
-
 const app = express();
-
 
 
 // parse requrests of content-type - application/json
