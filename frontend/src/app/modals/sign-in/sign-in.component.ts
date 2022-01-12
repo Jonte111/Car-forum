@@ -36,6 +36,7 @@ export class SignInComponent implements OnInit {
         console.log(res)
         localStorage.setItem('token', res.accessToken);
         localStorage.setItem('username', res.username);
+        localStorage.setItem('id', res.id);
         console.log(res.accessToken)
         console.log(res.username)
         //Closes open modals
