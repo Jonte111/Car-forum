@@ -10,9 +10,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  //The user credentials that are doing the sign in is sent to the _loginUrl adress
   signInUser(user: any) {
     return this.http.post<any>(this._loginUrl, user);
   }
+  //If there is a token in local storage then you are logged in
   signedIn() {
     return !!localStorage.getItem('token')
   }

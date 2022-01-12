@@ -22,20 +22,22 @@ export class SignInComponent implements OnInit {
     if (!this.username||!this.password) {
       return;
     }
-     const newSignInEvent = {
+    const userToBeSignedIn = {
         username: this.username,
         password: this.password
      }
     
-    this._auth.signInUser(newSignInEvent).subscribe(
+    //Calls on signInUser in authService
+    this._auth.signInUser(userToBeSignedIn).subscribe(
       res => {
+        //Token and username is stored in localStorage
         console.log(res)
         localStorage.setItem('token', res.accessToken);
         localStorage.setItem('username', res.username);
         console.log(res.accessToken)
         console.log(res.username)
+        //Closes open modals
         this.dialog.closeAll();
-
       },
       err => console.log(err)
     )
