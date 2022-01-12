@@ -10,6 +10,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class SignInComponent implements OnInit {
   username!: string;
   password!: string;
+  errorMessage!: string;
+  wasAnError!: boolean;
 
   constructor(private _auth: AuthService,
     public dialog: MatDialog) { }
@@ -39,7 +41,11 @@ export class SignInComponent implements OnInit {
         //Closes open modals
         this.dialog.closeAll();
       },
-      err => console.log(err)
+      err => { 
+        this.wasAnError = true;
+        this.errorMessage = err.statusText;
+        console.log(err, ' errror in sign-in')
+      }
     )
     this.username = "";
     this.password = "";
