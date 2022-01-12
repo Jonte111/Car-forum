@@ -12,7 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -26,6 +26,7 @@ import { ElectriccarsComponent } from './pages/electriccars/electriccars.compone
 import { VeterancarsComponent } from './pages/veterancars/veterancars.component';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { MyprofileComponent } from './pages/myprofile/myprofile.component';
     MatMenuModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

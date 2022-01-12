@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -9,10 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  // @Output() onSignInEvent: EventEmitter<Any> = new EventEmitter();
   username!: string;
   password!: string;
-  // @Output() onSignInEvent: EventEmitter<Object> = new EventEmitter();
 
   constructor(private _auth: AuthService,
     public dialog: MatDialog) { }
