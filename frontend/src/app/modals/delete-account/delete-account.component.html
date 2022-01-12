@@ -3,11 +3,17 @@
   <form class="delete-account-form">
     <mat-form-field appearance="outline" class="form-control">
       <mat-label for="password">Password</mat-label>
-      <input matInput type="text" name="title" id="title" required>
+      <input matInput type="password" name="password" id="password" required [(ngModel)]="password">
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
     <br>
-    <button color="warn" mat-raised-button class="create-button" type="submit" value="Sign in">Delete</button>
+    <mat-form-field appearance="outline" class="form-control">
+      <mat-label for="confirm-password">Confirm password</mat-label>
+      <input matInput type="confirm-password" name="confirm-password" id="confirm-password" required [(ngModel)]="confirmPassword">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br>
+    <button color="warn" mat-raised-button class="create-button" type="submit" value="Sign in" (click)="onDeleteAccount()">Delete</button>
 
   </form>
 </mat-card>

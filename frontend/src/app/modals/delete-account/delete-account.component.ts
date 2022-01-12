@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delete-account.component.css']
 })
 export class DeleteAccountComponent implements OnInit {
-
+  
+  password!: string;
+  confirmPassword!: string;
+  
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  onDeleteAccount() {
+    const deletAccountCredentials = {
+      password: this.password,
+      confirmPassword: this.confirmPassword
+    }
+  }
 }
