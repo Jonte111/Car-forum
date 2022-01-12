@@ -3,13 +3,13 @@
   <form class="register-form" (ngSubmit)="onRegister()">
     <mat-form-field appearance="outline" class="form-control">
       <mat-label for="text">Email</mat-label>
-      <input matInput type="email" name="email" id="email" placeholder="Email" [(ngModel)]="email" required>
+      <input matInput type="email" name="email" id="email" placeholder="Email" [(ngModel)]="email" (ngModelChange)='onChange()' required>
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>    
     <br>
     <mat-form-field appearance="outline" class="form-control">
       <mat-label for="text">Username</mat-label>
-      <input matInput type="text" name="username" id="username" placeholder="Username" [(ngModel)]="username" required>
+      <input matInput type="text" name="username" id="username" placeholder="Username" [(ngModel)]="username" (ngModelChange)='onChange()' required>
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
 
@@ -17,20 +17,17 @@
 
     <mat-form-field appearance="outline" class="form-control">
       <mat-label for="text">Password</mat-label>
-      <input matInput type="password" name="password" id="password" placeholder="Password" [(ngModel)]="password"
-        required>
+      <input matInput type="password" name="password" id="password" placeholder="Password" [(ngModel)]="password" (ngModelChange)='onChange()' required>
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
 
     <br>
     <mat-form-field appearance="outline" class="form-control">
       <mat-label for="text">Repeat Password</mat-label>
-      <input matInput type="password" name="confirmPassword" id="confirmPassword" placeholder="Repeat Password" [(ngModel)]="confirmPassword" required>
+      <input matInput type="password" name="confirmPassword" id="confirmPassword" placeholder="Repeat Password" [(ngModel)]="confirmPassword" (ngModelChange)='onChange()' required>
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    </mat-form-field>
-    
+    </mat-form-field>   
     <br>
-
     <button mat-raised-button color="primary" type="submit" value="Sign in">Register</button>
     <mat-error *ngIf="wasAnError">{{errorMessage}}</mat-error>
   </form>

@@ -40,7 +40,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
 
 
 checkPasswords = (req, res, next) => {
-    let regix = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    /* let regix = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})"); */
     if(req.body.password != req.body.confirmPassword) {
         res.status(400).send({ message: "password not match" });
         return;
@@ -51,10 +51,10 @@ checkPasswords = (req, res, next) => {
         return;
     }
     
-    else if(regix.test(req.body.password) == false) {
+   /*  else if(regix.test(req.body.password) == false) {
         res.status(400).send({ message: "Password must be a minimum of 8 characters including number, Upper, Lower And one special character"});
         return;
-    }
+    } */
     next();
 };
 

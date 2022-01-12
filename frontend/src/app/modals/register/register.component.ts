@@ -20,7 +20,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
- 
+  onChange() {
+    this.wasAnError = false;
+  }
+  
   onRegister() {
     if (!this.username || !this.email || !this.password || !this.confirmPassword) {
       return
@@ -44,10 +47,11 @@ export class RegisterComponent implements OnInit {
       }      
     );
 
-    this.email = "",
-    this.username = "",
-    this.password = "" , 
-    this.confirmPassword = ""
+    this.email = "";
+    this.username = "";
+    this.password = ""; 
+    this.confirmPassword = "";
+    this.wasAnError = false;
   }
 
 }
