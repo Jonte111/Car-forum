@@ -15,7 +15,24 @@ export class CreateThreadComponent implements OnInit {
   }
 
   onCreateThread() {
-    //Make sure that enter does not make a submit
+
+    const createdThread = {
+      title: this.title,
+      token: localStorage.getItem('token'),
+      // firstPost: this.firstPost,
+      threadStarter: localStorage.getItem('username'),
+      posts: [this.firstPost],
+      threadViews: 0,
+      createdTime: Date,
+      numberOfComments: 0,
+      blockedUsers: [],
+      adminLocked: false,
+      threadStarterLocked: false,
+    }
+    console.log(createdThread, " createdThread");
+    
+
+
     console.log("click")
     if (!this.title || !this.firstPost) {
       return;
