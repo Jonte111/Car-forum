@@ -3,18 +3,14 @@
 const express = require("express");
 // Cross Origin Resource Sharing (CORS)
 // cors provides Express middleware to enable CORS
-const cors = require("cors");
+
 const dotenv = require("dotenv").config();
 
 
 
 const app = express();
 
-let corsOptions = {
-    origin: "http://localhost:4001"
-};
 
-app.use(cors(corsOptions));
 
 // parse requrests of content-type - application/json
 app.use(express.json());
