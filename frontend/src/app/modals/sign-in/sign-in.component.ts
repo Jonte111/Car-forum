@@ -43,7 +43,7 @@ export class SignInComponent implements OnInit {
       },
       err => { 
         this.wasAnError = true;
-        this.errorMessage = err.statusText;
+        this.errorMessage = err.error.message;
         console.log(err, ' errror in sign-in')
       }
     )

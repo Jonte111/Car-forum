@@ -19,7 +19,7 @@
     <br>
     
     <button mat-raised-button color="primary" type="submit" value="Sign in">Sign in</button>
-    <mat-error *ngIf="wasAnError"><h2>ERROR: {{errorMessage}}</h2></mat-error>
+    <mat-error *ngIf="wasAnError">{{errorMessage}}</mat-error>
 
   </form>
 </mat-card>
