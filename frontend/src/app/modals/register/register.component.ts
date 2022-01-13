@@ -13,6 +13,8 @@ export class RegisterComponent implements OnInit {
   confirmPassword!: string;
   errorMessage!: string;
   wasAnError!: boolean;
+  successMessage!: string;
+  isRegisterSuccess!: boolean;
 
 
   constructor(private _registerUser: RegisterUserService) { }
@@ -22,6 +24,7 @@ export class RegisterComponent implements OnInit {
 
   onChange() {
     this.wasAnError = false;
+    this.successMessage = "";
   }
   
   onRegister() {
@@ -38,6 +41,8 @@ export class RegisterComponent implements OnInit {
     this._registerUser.signUpUser(registerInfo).subscribe(
       res => {
         this.wasAnError = false;
+        this.isRegisterSuccess = true;
+        this.successMessage = res.message;
         console.log(res)
       },
       err => {
@@ -46,12 +51,13 @@ export class RegisterComponent implements OnInit {
         console.log(err,'error in register') 
       }      
     );
-
+/* 
     this.email = "";
     this.username = "";
     this.password = ""; 
-    this.confirmPassword = "";
+    this.confirmPassword = ""; */
     this.wasAnError = false;
+    this.isRegisterSuccess = false;
   }
 
 }

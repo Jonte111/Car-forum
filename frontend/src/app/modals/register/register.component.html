@@ -28,6 +28,7 @@
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>   
     <br>
+    <mat-label *ngIf="isRegisterSuccess">{{successMessage}}</mat-label>
     <button mat-raised-button color="primary" type="submit" value="Sign in">Register</button>
     <mat-error *ngIf="wasAnError">{{errorMessage}}</mat-error>
   </form>
