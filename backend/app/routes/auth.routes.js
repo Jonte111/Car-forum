@@ -23,7 +23,6 @@ module.exports = function (app) {
     app.delete(
         "/api/users/:id", 
         [
-            verifySignUp.checkPasswords,
             controller.delete
         ]);
 };
