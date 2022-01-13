@@ -114,20 +114,45 @@ exports.signin = (req, res) => {
 exports.delete = (req, res) => {
 const id = req.params.id;
 
-User.findByIdAndRemove(id)
-    .then(data => {
-        if(!data) {
-            res.status(400).send({
+User.findById(id)
+    .then(user => {
+        if(!user) {
+            return res.status(400).send({
                 message: `Cannot delete User with id=${id}. Maybe user was not found!`
             });
-        } else {
-            res.send({
-                message: "User was deleted successfully!"
+
+         
+        } 
+        
+        let passIsValid = bcrypt.compareSync(
+            req.body.password,
+            user.password
+        );
+
+        if(!passIsValid) {
+            return res.status(401).send({
+                message: `Could not delete ${id} Bad Credentials...`
             });
         }
+    
+        else {
+            User.findByIdAndRemove(id, function (err) {
+                if (err){
+                    res.status(500).send({ message: err });
+                    return;
+                }
+                else{
+                    return res.status(200).send({
+                        message: `User deleted ${id}`
+                    });
+                    
+                    
+                }
+            });
+            }
     })
     .catch(err => {
-        res.status(500).send({
+        return res.status(500).send({
             message: "Could not delete User with id= " + id
         });
     });
