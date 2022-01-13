@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { RegisterUserService } from 'src/app/services/register-user.service';
+import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -13,18 +15,15 @@ export class RegisterComponent implements OnInit {
   confirmPassword!: string;
   errorMessage!: string;
   wasAnError!: boolean;
-  successMessage!: string;
-  isRegisterSuccess!: boolean;
 
 
-  constructor(private _registerUser: RegisterUserService) { }
+  constructor(private _registerUser: RegisterUserService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   onChange() {
     this.wasAnError = false;
-    this.successMessage = "";
   }
   
   onRegister() {
@@ -41,8 +40,8 @@ export class RegisterComponent implements OnInit {
     this._registerUser.signUpUser(registerInfo).subscribe(
       res => {
         this.wasAnError = false;
-        this.isRegisterSuccess = true;
-        this.successMessage = res.message;
+        this.dialog.closeAll();
+        Swal.fire("Success", "Register successfully", "success")
         console.log(res)
       },
       err => {
@@ -57,7 +56,6 @@ export class RegisterComponent implements OnInit {
     this.password = ""; 
     this.confirmPassword = ""; */
     this.wasAnError = false;
-    this.isRegisterSuccess = false;
   }
 
 }
