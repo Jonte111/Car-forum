@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-delete-account',
@@ -9,7 +9,6 @@ import { HttpClient } from '@angular/common/http';
 export class DeleteAccountComponent implements OnInit {
   
   password!: string;
-  confirmPassword!: string;
   private _deleteAccountUrl = "/api/users/" + localStorage.getItem('id');
   status!: string;
 
@@ -19,16 +18,33 @@ export class DeleteAccountComponent implements OnInit {
   }
 
   onDeleteAccount() {
-    if (this.password != this.confirmPassword) {
+    if (!this.password) {
       return;
     }
-    console.log(this.password, this.confirmPassword, this._deleteAccountUrl," credentials to delete account");
+    console.log(this.password, this._deleteAccountUrl," credentials to delete account");
+    
     
     const deletAccountCredentials = {
-      password: this.password,
-      confirmPassword: this.confirmPassword
-    }
-    this.http.delete(this._deleteAccountUrl).subscribe(() => this.status = 'Delete successful');
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        password: this.password
+      },
+    };
 
+    this.http
+      .delete(this._deleteAccountUrl, deletAccountCredentials)
+      .subscribe(
+        res => console.log('HTTP response', res),
+        err => console.log('HTTP Error', err),
+        () => console.log('HTTP request completed.')
+        // console.log(s);
+
+      //if responstatus 200
+        // localStorage.clear();
+        //Route to homepage 
+        //swal account is deleted
+      );
   }
 }
