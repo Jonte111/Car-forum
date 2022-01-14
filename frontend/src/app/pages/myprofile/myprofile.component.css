@@ -1,0 +1,16 @@
+.my-profile-container{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  row-gap: 50px;
+  margin: 10px;
+}
+.example-card {
+  background-color: rgb(214, 214, 214);
+  margin-bottom: 10px;
+}
+
+.delete-account-button{
+  margin-bottom: 100px;
+}
