@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { RegisterUserService } from 'src/app/services/register-user.service';
+import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +17,7 @@ export class RegisterComponent implements OnInit {
   wasAnError!: boolean;
 
 
-  constructor(private _registerUser: RegisterUserService) { }
+  constructor(private _registerUser: RegisterUserService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -38,6 +40,8 @@ export class RegisterComponent implements OnInit {
     this._registerUser.signUpUser(registerInfo).subscribe(
       res => {
         this.wasAnError = false;
+        this.dialog.closeAll();
+        Swal.fire("Success", "Register successfully", "success")
         console.log(res)
       },
       err => {
@@ -46,11 +50,11 @@ export class RegisterComponent implements OnInit {
         console.log(err,'error in register') 
       }      
     );
-
+/* 
     this.email = "";
     this.username = "";
     this.password = ""; 
-    this.confirmPassword = "";
+    this.confirmPassword = ""; */
     this.wasAnError = false;
   }
 

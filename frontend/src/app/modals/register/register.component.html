@@ -27,7 +27,7 @@
       <input matInput type="password" name="confirmPassword" id="confirmPassword" placeholder="Repeat Password" [(ngModel)]="confirmPassword" (ngModelChange)='onChange()' required>
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>   
-    <br>
+    <br>    
     <button mat-raised-button color="primary" type="submit" value="Sign in">Register</button>
     <mat-error *ngIf="wasAnError">{{errorMessage}}</mat-error>
   </form>
