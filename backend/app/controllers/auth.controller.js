@@ -2,10 +2,12 @@ const config = require("../config/auth.config");
 const db = require("../models");
 let User = db.user;
 const Role = db.role;
+//let Blocklist = db.blocklist;
 
 let jwt = require("jsonwebtoken");
 let bcrypt = require("bcryptjs");
-const { user } = require("../models");
+const { user, blocklist } = require("../models");
+//const Blocklist = require("../models/blocklist.user");
 
 exports.signup = (req, res) => {
     const user = new User({
@@ -64,8 +66,9 @@ exports.signup = (req, res) => {
     });
 };
 
+
 exports.signin = (req, res) => {
-    User.findOne({
+    User.findOne({ 
         username: req.body.username
     })
     .populate("roles", "-__v")
@@ -157,4 +160,28 @@ User.findById(id)
         });
     });
 
+};
+
+exports.block = (req, res) => {
+    const id = req.params.id;
+
+    User.findById(id)
+    .then(user => {
+        if(!user) {
+            return res.status(400).send({
+                message: `Cannot block User with id=${id}. Maybe User was not found!`
+            });
+        } 
+
+        else {
+            user.save(err => {
+                if(err) {
+                    res.status(500).send({ message: err });
+                    return;
+                }
+
+                res.send({ message: "User was blocked! "});
+            })
+        }
+    })
 };
