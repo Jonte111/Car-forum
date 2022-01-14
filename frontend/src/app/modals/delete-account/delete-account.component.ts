@@ -13,6 +13,7 @@ export class DeleteAccountComponent implements OnInit {
   password!: string;
   private _deleteAccountUrl = "/api/users/" + localStorage.getItem('id');
   status!: string;
+  message!: string;
 
   constructor(private http: HttpClient,
     public dialog: MatDialog) { }
@@ -46,8 +47,7 @@ export class DeleteAccountComponent implements OnInit {
         },
         err => {
           console.log('HTTP Error', err)
-          this.dialog.closeAll();
-          Swal.fire("Error", "Wrong password", "error")
+          this.message = 'Wrong password';
         },
         () => console.log('HTTP request completed.')
         // console.log(s);
