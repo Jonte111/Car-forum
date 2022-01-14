@@ -43,23 +43,17 @@ export class DeleteAccountComponent implements OnInit {
       .delete(this._deleteAccountUrl, deletAccountCredentials)
       .subscribe(
         res => {
-          console.log('HTTP response', res)
+          console.log('HTTP response', res);
           localStorage.clear();
           this.dialog.closeAll();
           this._router.navigate(['/']);
-          Swal.fire("Success", "Account deleted", "success")
+          Swal.fire("Success", "Account deleted", "success");
         },
         err => {
-          console.log('HTTP Error', err)
+          console.log('HTTP Error', err);
           this.message = 'Wrong password';
         },
         () => console.log('HTTP request completed.')
-        // console.log(s);
-
-      //if responstatus 200
-        // localStorage.clear();
-        //Route to homepage 
-        //swal account is deleted
       );
   }
 }
