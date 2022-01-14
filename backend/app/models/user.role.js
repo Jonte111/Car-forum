@@ -22,6 +22,7 @@ const User = mongoose.model(
         },
         moderatorBlocked: {
             type: Boolean,
+            default: false
         },
         roles: [
             {
