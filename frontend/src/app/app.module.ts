@@ -27,6 +27,7 @@ import { VeterancarsComponent } from './pages/veterancars/veterancars.component'
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 
 import { AuthService } from './services/auth.service';
+import { RoleMaintenanceComponent } from './modals/role-maintenance/role-maintenance.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AuthService } from './services/auth.service';
     SportcarsComponent,
     ElectriccarsComponent,
     VeterancarsComponent,
-    MyprofileComponent
+    MyprofileComponent,
+    RoleMaintenanceComponent
   ],
   imports: [
     BrowserModule,

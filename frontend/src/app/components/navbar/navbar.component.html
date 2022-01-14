@@ -10,6 +10,8 @@
   <mat-menu #menu="matMenu">
     <a mat-button routerLink="myprofile">My profile</a>
     <br>
+    <a mat-button *ngIf="_authService.signedIn()" (click)="openRoleMaintenance()">Role maintenance</a>
+    <br>
     <a mat-button (click)="_authService.signOutUser()">Sign out</a>
   </mat-menu>
 </mat-toolbar>
