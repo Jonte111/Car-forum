@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete-account',
@@ -16,7 +17,8 @@ export class DeleteAccountComponent implements OnInit {
   message!: string;
 
   constructor(private http: HttpClient,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -42,7 +44,9 @@ export class DeleteAccountComponent implements OnInit {
       .subscribe(
         res => {
           console.log('HTTP response', res)
+          localStorage.clear();
           this.dialog.closeAll();
+          this._router.navigate(['/']);
           Swal.fire("Success", "Account deleted", "success")
         },
         err => {
