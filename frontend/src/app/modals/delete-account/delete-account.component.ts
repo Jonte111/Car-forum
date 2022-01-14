@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-delete-account',
@@ -12,7 +14,8 @@ export class DeleteAccountComponent implements OnInit {
   private _deleteAccountUrl = "/api/users/" + localStorage.getItem('id');
   status!: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -36,8 +39,16 @@ export class DeleteAccountComponent implements OnInit {
     this.http
       .delete(this._deleteAccountUrl, deletAccountCredentials)
       .subscribe(
-        res => console.log('HTTP response', res),
-        err => console.log('HTTP Error', err),
+        res => {
+          console.log('HTTP response', res)
+          this.dialog.closeAll();
+          Swal.fire("Success", "Account deleted", "success")
+        },
+        err => {
+          console.log('HTTP Error', err)
+          this.dialog.closeAll();
+          Swal.fire("Error", "Wrong password", "error")
+        },
         () => console.log('HTTP request completed.')
         // console.log(s);
 
