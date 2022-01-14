@@ -25,4 +25,8 @@ module.exports = function (app) {
         [
             controller.delete
         ]);
+
+    
+
+    app.put("/api/users/block/:id", controller.update);
 };
