@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DeleteAccountComponent } from 'src/app/modals/delete-account/delete-account.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-myprofile',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyprofileComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDeleteAccount() {
+    this.dialog.open(DeleteAccountComponent);
   }
 
 }

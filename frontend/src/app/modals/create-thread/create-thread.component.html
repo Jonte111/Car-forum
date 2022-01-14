@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-title>Create thread</mat-card-title>
+  <form class="create-thread-form" (keydown.enter)="$event.preventDefault()">
+    <mat-form-field appearance="outline" class="form-control">
+      <mat-label for="text">Name of thread</mat-label>
+      <input matInput type="text" name="title" id="title" required [(ngModel)]="title">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>First post in thread</mat-label>
+      <textarea matInput placeholder="Ex. Volvo vs Tesla..." type="first-post" name="first-post" id="first-post" required [(ngModel)]="firstPost"></textarea>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button class="create-button" type="submit" (click)="onCreateThread()" value="Sign in">Create</button>
+
+  </form>
+</mat-card>

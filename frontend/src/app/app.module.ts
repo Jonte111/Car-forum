@@ -28,6 +28,8 @@ import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 
 import { AuthService } from './services/auth.service';
 import { RoleMaintenanceComponent } from './modals/role-maintenance/role-maintenance.component';
+import { CreateThreadComponent } from './modals/create-thread/create-thread.component';
+import { DeleteAccountComponent } from './modals/delete-account/delete-account.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { RoleMaintenanceComponent } from './modals/role-maintenance/role-mainten
     ElectriccarsComponent,
     VeterancarsComponent,
     MyprofileComponent,
-    RoleMaintenanceComponent
+    RoleMaintenanceComponent,
+    CreateThreadComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,
