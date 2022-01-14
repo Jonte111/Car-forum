@@ -12,4 +12,8 @@ export class RoleMaintenanceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onUpdate() {
+    
+  }
+
 }
