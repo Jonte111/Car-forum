@@ -27,6 +27,8 @@ import { VeterancarsComponent } from './pages/veterancars/veterancars.component'
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 
 import { AuthService } from './services/auth.service';
+import { CreateThreadComponent } from './modals/create-thread/create-thread.component';
+import { DeleteAccountComponent } from './modals/delete-account/delete-account.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { AuthService } from './services/auth.service';
     SportcarsComponent,
     ElectriccarsComponent,
     VeterancarsComponent,
-    MyprofileComponent
+    MyprofileComponent,
+    CreateThreadComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,
