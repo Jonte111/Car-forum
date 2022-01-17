@@ -20,6 +20,10 @@ const User = mongoose.model(
         confirmPassword: {
             type: String,
         },
+        moderatorBlocked: {
+            type: Boolean,
+            default: false
+        },
         roles: [
             {
                 type: mongoose.Schema.Types.ObjectId,

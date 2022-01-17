@@ -25,4 +25,10 @@ module.exports = function (app) {
         [
             controller.delete
         ]);
+
+    
+
+    app.put("/api/users/update/:id", controller.update);
+
+   
 };
