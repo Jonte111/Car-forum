@@ -27,6 +27,18 @@ exports.postThread = (req, res) => {
     });
 };
 
+exports.findAll = (req, res) => {
+  const title = req.body.title;
+  Thread.find(title, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Threads."
+      });
+    else res.send(data);
+  });
+};
+
 exports.delete = (req, res) => {
     Thread.findByIdAndRemove(req.params.id, (err) => {
       if (err) {

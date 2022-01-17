@@ -7,6 +7,8 @@ module.exports = function(app) {
         next();
     });
 
+    app.get("/api/threads", controller.findAll);
+
     // Create a new Thread
     app.post("/api/thread/create", controller.postThread);
 
