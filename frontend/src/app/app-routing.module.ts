@@ -7,6 +7,7 @@ import { SportcarsComponent } from './pages/sportcars/sportcars.component';
 import { ElectriccarsComponent } from './pages/electriccars/electriccars.component';
 import { VeterancarsComponent } from './pages/veterancars/veterancars.component';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
+import { ThreadDetailComponent } from './pages/thread-detail/thread-detail.component';
 
 
 const routes: Routes = [
@@ -14,8 +15,10 @@ const routes: Routes = [
   { path: 'aboutus', component: AboutUsComponent},
   { path: 'forum', component: ForumComponent},
   { path: 'forum/sportcars', component: SportcarsComponent},
+  { path: 'forum/sportcars/:id', component: ThreadDetailComponent},
   { path: 'forum/electriccars', component: ElectriccarsComponent},
   { path: 'forum/veterancars', component: VeterancarsComponent},
+  { path: 'myprofile', component: MyprofileComponent},
   { path: 'myprofile', component: MyprofileComponent},
 ];
 

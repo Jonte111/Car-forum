@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-create-thread',
@@ -9,35 +10,25 @@ export class CreateThreadComponent implements OnInit {
   title!: string;
   firstPost!: string;
 
-  constructor() { }
+  constructor(public _store: StoreService) { }
 
   ngOnInit(): void {
   }
 
   onCreateThread() {
-
-    const createdThread = {
-      title: this.title,
-      token: localStorage.getItem('token'),
-      // firstPost: this.firstPost,
-      threadStarter: localStorage.getItem('username'),
-      posts: [this.firstPost],
-      threadViews: 0,
-      createdTime: Date,
-      numberOfComments: 0,
-      blockedUsers: [],
-      adminLocked: false,
-      threadStarterLocked: false,
-    }
-    console.log(createdThread, " createdThread");
-    
-
-
-    console.log("click")
     if (!this.title || !this.firstPost) {
       return;
     }
-    console.log(this.title, this.firstPost, " title and first post")
+    const createdThreadInformation = {
+      threadStarter: localStorage.getItem('id'),
+      title: this.title,
+      // firstPost: this.firstPost
+    }
+    
+    this._store.createThread(createdThreadInformation);
+
+
+    
   }
 
 }
