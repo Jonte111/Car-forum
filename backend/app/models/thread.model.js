@@ -22,6 +22,13 @@ const Thread = mongoose.model(
                 default: []
             }
         ],
+        posts: [
+            {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Post",
+            default: []
+            }
+        ],
         adminLocked: {
             type: Boolean,
             default: false
