@@ -8,13 +8,30 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RoleMaintenanceComponent implements OnInit {
   users: any;
+  username!: string;
 
-  constructor(private _searchAllUsers: AuthService) { }
+  constructor(private _searchUser: AuthService) { }
 
   ngOnInit(): void {
   }
 
   onSearch() {
+    console.log("click search")
+    const username = this.username;
+    console.log("username",username)
+    this._searchUser.getUserByUserName(username).subscribe(
+      res => {
+        this.users = res;
+        console.log(res)
+      },
+      err => {
+        console.log(err, 'error in search')
+      }
+    );
+  }
+
+  
+  /* onSearch() {
     console.log("click search")
     this._searchAllUsers.getAllUsers().subscribe(
       res => {      
@@ -25,7 +42,7 @@ export class RoleMaintenanceComponent implements OnInit {
         console.log(err, 'error in search')
       }
     );
-  }
+  } */
 
   onUpdate() {
     

@@ -10,6 +10,7 @@ export class AuthService {
   password!: string;
   private _loginUrl = "/api/auth/signin";
   private _getAllUsersUrl = "/api/users";
+  private _getUserByUserNameUrl = "/api/users/username";
 
   constructor(private http: HttpClient,
     private _router: Router) { }
@@ -29,6 +30,15 @@ export class AuthService {
 
   getAllUsers() {
     return this.http.get<any>(this._getAllUsersUrl);
+  }
+
+  getUserById(id:string) {
+    return this.http.get<any>(this._getAllUsersUrl);
+  }
+
+  getUserByUserName(username: string) {
+    const url = this._getUserByUserNameUrl + "/"+username
+    return this.http.get<any>(url);
   }
 
 }

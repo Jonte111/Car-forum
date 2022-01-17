@@ -29,3 +29,11 @@ exports.getUserById = async (req, res) => {
     let data = await User.findById(id)
     res.json(data)
 }
+
+exports.getUserByUserName = async (req, res) => {
+    const username = req.params.username;
+    console.log("username i backend",username)
+    let data = await User.find({ username: username })
+    res.json(data)
+}
+

@@ -3,7 +3,7 @@
   <form class="role-maintenance-form" (ngSubmit)="onUpdate()">
     <mat-form-field appearance="outline" class="form-control">
       <mat-label for="text">Username</mat-label>
-      <input matInput type="text" name="username" id="username" placeholder="Use Name">
+      <input matInput type="text" name="username" id="username" [(ngModel)]="username" placeholder="Use Name"  required >
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit" (click)="onSearch()">Search</button>
