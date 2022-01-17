@@ -18,7 +18,8 @@ const Thread = mongoose.model(
         blockedUsers: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "User"
+                ref: "User",
+                default: []
             }
         ],
         adminLocked: {
