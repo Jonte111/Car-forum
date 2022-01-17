@@ -9,4 +9,6 @@ module.exports = function(app) {
 
     // Create a new Thread
     app.post("/api/thread/create", controller.postThread);
+
+    app.delete("/api/thread/delete/:id", controller.delete);
 };

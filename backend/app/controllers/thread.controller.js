@@ -2,9 +2,7 @@ const config = require("../config/auth.config");
 const db = require("../models");
 const Thread = db.thread;
 
-
 exports.postThread = (req, res) => {
-
     // Validate request
     if(!req.body) {
         res.status(400).send({
@@ -27,6 +25,20 @@ exports.postThread = (req, res) => {
         });
         else res.send(data);
     });
-   
-
 };
+
+exports.delete = (req, res) => {
+    Thread.remove(req.params.id, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Thread with id ${req.params.id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Could not delete Thread with id " + req.params.id
+          });
+        }
+      } else res.send({ message: `Thread was deleted successfully!` });
+    });
+  };
