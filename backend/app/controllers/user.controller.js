@@ -32,8 +32,14 @@ exports.getUserById = async (req, res) => {
 
 exports.getUserByUserName = async (req, res) => {
     const username = req.params.username;
-    console.log("username i backend",username)
     let data = await User.find({ username: username })
     res.json(data)
 }
+
+exports.getRoleById = async (req, res) => {
+    const id = req.params.id;
+    let data = await Role.findById(id)
+    res.json(data)
+}
+
 

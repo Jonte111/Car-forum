@@ -18,6 +18,9 @@ module.exports = function(app) {
     //get user by username
     app.get("/api/users/username/:username", controller.getUserByUserName);
 
+    //get role by id
+    app.get("/api/roles/:id", controller.getRoleById);
+
     
     app.get("/api/test/all", controller.allAccess); 
 

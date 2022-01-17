@@ -11,6 +11,7 @@ export class AuthService {
   private _loginUrl = "/api/auth/signin";
   private _getAllUsersUrl = "/api/users";
   private _getUserByUserNameUrl = "/api/users/username";
+  private _getRoleByIdUrl = "/api/roles";
 
   constructor(private http: HttpClient,
     private _router: Router) { }
@@ -38,6 +39,12 @@ export class AuthService {
 
   getUserByUserName(username: string) {
     const url = this._getUserByUserNameUrl + "/"+username
+    return this.http.get<any>(url);
+  }
+
+  getRoleById(id: string) {
+    const url = this._getRoleByIdUrl + "/" + id
+    console.log(url)
     return this.http.get<any>(url);
   }
 

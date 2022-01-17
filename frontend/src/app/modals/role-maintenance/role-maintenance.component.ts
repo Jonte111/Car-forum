@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RoleMaintenanceComponent implements OnInit {
   users: any;
   username!: string;
+  roles!: [];
+  moderator!: boolean;
 
   constructor(private _searchUser: AuthService) { }
 
@@ -22,7 +24,19 @@ export class RoleMaintenanceComponent implements OnInit {
     this._searchUser.getUserByUserName(username).subscribe(
       res => {
         this.users = res;
-        console.log(res)
+        for (let i = 0; i < res[0].roles.length; i++) {
+          this._searchUser.getRoleById(res[0].roles[i]).subscribe(
+            res1 => { 
+              if (res1.name === "moderator") {
+                this.moderator = true
+              }
+            },
+            err1 => {
+              console.log(err1, 'error in search roles')
+            }
+          )
+        }
+       
       },
       err => {
         console.log(err, 'error in search')
