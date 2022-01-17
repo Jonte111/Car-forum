@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./sportcars.component.css']
 })
 export class SportcarsComponent implements OnInit {
-
+  tempThreads = [{}]
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {

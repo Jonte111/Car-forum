@@ -14,3 +14,7 @@
 .create-thread-button{
   margin-bottom: 15px;
 }
+
+.route-link{
+  text-decoration: none;
+}
