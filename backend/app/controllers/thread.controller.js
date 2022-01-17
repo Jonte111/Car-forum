@@ -28,7 +28,7 @@ exports.postThread = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    Thread.remove(req.params.id, (err, data) => {
+    Thread.findByIdAndRemove(req.params.id, (err) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
