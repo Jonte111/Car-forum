@@ -28,5 +28,7 @@ module.exports = function (app) {
 
     
 
-    app.put("/api/users/block/:id", controller.update);
+    app.put("/api/users/update/:id", controller.update);
+
+   
 };
