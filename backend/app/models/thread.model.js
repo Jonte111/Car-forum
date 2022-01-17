@@ -1,4 +1,10 @@
 const mongoose = require("mongoose");
+const moment = require('moment-timezone');
+
+let current  = new Date();
+let timeStamp = new Date(Date.UTC(current.getFullYear(), 
+current.getMonth(),current.getDate(),current.getHours(), 
+current.getMinutes(),current.getSeconds(), current.getMilliseconds()));
 
 const Thread = mongoose.model(
     "Thread",
@@ -13,7 +19,8 @@ const Thread = mongoose.model(
         },
         createdTime: {
             type: Date,
-            default: Date.now
+            default: timeStamp
+         
         },
         blockedUsers: [
             {
