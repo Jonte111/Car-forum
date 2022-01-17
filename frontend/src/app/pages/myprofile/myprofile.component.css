@@ -6,11 +6,17 @@
   row-gap: 50px;
   margin: 10px;
 }
-.example-card {
+.thread-card {
   background-color: rgb(214, 214, 214);
   margin-bottom: 10px;
 }
+.thread-card:hover {
+  cursor: pointer;
+}
+.create-thread-button{
+  margin-bottom: 15px;
+}
 
-.delete-account-button{
-  margin-bottom: 100px;
+.route-link{
+  text-decoration: none;
 }
