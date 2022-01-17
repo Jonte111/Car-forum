@@ -44,7 +44,6 @@ export class AuthService {
 
   getRoleById(id: string) {
     const url = this._getRoleByIdUrl + "/" + id
-    console.log(url)
     return this.http.get<any>(url);
   }
 

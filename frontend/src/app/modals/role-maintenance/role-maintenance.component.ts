@@ -11,6 +11,11 @@ export class RoleMaintenanceComponent implements OnInit {
   username!: string;
   roles!: [];
   moderator!: boolean;
+  updatedBan!: boolean;
+  updatedModerator!: boolean;  
+  inLoggedUser!: string;  
+  inLoggedUserRoleId!: [];
+  inLoggedUserRole!: Array<string>;
 
   constructor(private _searchUser: AuthService) { }
 
@@ -24,8 +29,10 @@ export class RoleMaintenanceComponent implements OnInit {
     this._searchUser.getUserByUserName(username).subscribe(
       res => {
         this.users = res;
-        for (let i = 0; i < res[0].roles.length; i++) {
-          this._searchUser.getRoleById(res[0].roles[i]).subscribe(
+        this.roles = res[0].roles;
+        console.log("this.roles",this.roles)
+        for (let i = 0; i < this.roles.length; i++) {
+          this._searchUser.getRoleById(this.roles[i]).subscribe(
             res1 => { 
               if (res1.name === "moderator") {
                 this.moderator = true
@@ -43,23 +50,36 @@ export class RoleMaintenanceComponent implements OnInit {
       }
     );
   }
-
-  
-  /* onSearch() {
-    console.log("click search")
-    this._searchAllUsers.getAllUsers().subscribe(
-      res => {      
-        this.users = res;
-        console.log(res)
-      },
-      err => {       
-        console.log(err, 'error in search')
-      }
-    );
-  } */
+ 
 
   onUpdate() {
-    
+    this.inLoggedUser = localStorage.getItem('username') || "";
+    console.log("click on update")
+    console.log("this.inLoggedUser", this.inLoggedUser)
+    this._searchUser.getUserByUserName(this.inLoggedUser).subscribe(
+      res => {
+        this.inLoggedUserRoleId = res[0].roles;
+        for (let i = 0; i < this.inLoggedUserRoleId.length; i++) {
+          this._searchUser.getRoleById(this.inLoggedUserRoleId[i]).subscribe(
+            res1 => {
+              if (res1.name === "moderator") {
+                this.inLoggedUserRole.push("moderator")
+              }
+              if (res1.name === "amin") {
+                this.inLoggedUserRole.push("amin")
+              }
+              console.log("this.inLoggedUserRole", this.inLoggedUserRole)
+            },
+            err1 => {
+              console.log(err1, 'error in search roles')
+            }
+          )
+        }       
+      },
+      err1 => {
+        console.log(err1, 'error in search roles')
+      }
+    )
   }
 
 }

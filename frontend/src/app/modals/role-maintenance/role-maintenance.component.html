@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-title>Role Maintenance</mat-card-title>
-  <form class="role-maintenance-form" (ngSubmit)="onUpdate()">
+  <form class="role-maintenance-form">
     <mat-form-field appearance="outline" class="form-control">
       <mat-label for="text">Username</mat-label>
       <input matInput type="text" name="username" id="username" [(ngModel)]="username" placeholder="Use Name"  required >
@@ -25,6 +25,6 @@
     <br>
    
     <br>
-    <button mat-raised-button color="primary" type="submit" >Update</button>
+    <button mat-raised-button color="primary" type="submit" (click)="onUpdate()" >Update</button>
   </form>
 </mat-card>
