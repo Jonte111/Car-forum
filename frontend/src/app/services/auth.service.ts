@@ -9,6 +9,7 @@ export class AuthService {
   username!: string;
   password!: string;
   private _loginUrl = "/api/auth/signin";
+  private _getAllUsersUrl = "/api/users";
 
   constructor(private http: HttpClient,
     private _router: Router) { }
@@ -24,6 +25,10 @@ export class AuthService {
   signOutUser() {
     this._router.navigate(['/']);
     localStorage.clear();
+  }
+
+  getAllUsers() {
+    return this.http.get<any>(this._getAllUsersUrl);
   }
 
 }

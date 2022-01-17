@@ -1,6 +1,20 @@
 .listTitle {
     display: flex;
     flex-direction: row;
+    gap: 1em;
+    margin-top: 1em;
+}
+.userList {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+}
+.user{
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background-color: rgba(196, 196, 196, 0.1);
+    border-radius: 5px;
 }
