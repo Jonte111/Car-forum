@@ -27,3 +27,19 @@ exports.createPost = (req, res ) => {
         else res.send(data);
     });
 };
+
+exports.delete = (req, res) => {
+    Post.findByIdAndRemove(req.params.id, (err) => {
+        if(err) {
+            if(err.kind === "not_found") {
+                res.status(400).send({
+                    message: `Not found Post with id ${req.params.id}.`
+                });
+            } else {
+                res.status(500).send({
+                  message: "Could not delete Post with id " + req.params.id
+                });
+              }
+        } else res.send({ message: `Post was deleted successfully!` });
+    });
+};
