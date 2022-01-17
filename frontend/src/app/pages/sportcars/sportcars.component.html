@@ -1,77 +1,19 @@
 <div class="my-profile-container">
   <mat-card class="created-threads-card">
-    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
     <button mat-raised-button class="create-thread-button" color="primary" (click)="openCreateThread()">Create thread</button>
-    <mat-card-content class="example-cards">
-      <!-- <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p> -->
-      <a routerLink="/Service/Sign_in" class="route-link">
-      <mat-card class="example-card">
+    <mat-card-content class="thread-cards">
+      <!-- <a routerLink="/:id" class="route-link" > -->
+      <mat-card (click)="onSelect(thread)" class="thread-card" *ngFor="let thread of tempThreads">
         <mat-card-title-group>
-          <mat-card-title>Title of thread</mat-card-title>
+          <mat-card-title>{{thread.title}}</mat-card-title>
           <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
         </mat-card-title-group>
         <mat-card-content>
-          This can be the first post in the thread or the latest
+         <h4>Last comment in thread:</h4> {{thread.posts[thread.posts.length-1]}}
         </mat-card-content>
       </mat-card>
-      </a>
-      <mat-card class="example-card">
-        <mat-card-title-group>
-          <mat-card-title>Title of thread</mat-card-title>
-          <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
-        </mat-card-title-group>
-        <mat-card-content>
-          This can be the first post in the thread or the latest
-        </mat-card-content>
-
-      </mat-card>
-      <mat-card class="example-card">
-        <mat-card-title-group>
-          <mat-card-title>Title of thread</mat-card-title>
-          <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
-        </mat-card-title-group>
-        <mat-card-content>
-          This can be the first post in the thread or the latest
-        </mat-card-content>
-
-      </mat-card>
-      <mat-card class="example-card">
-        <mat-card-title-group>
-          <mat-card-title>Title of thread</mat-card-title>
-          <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
-        </mat-card-title-group>
-        <mat-card-content>
-          This can be the first post in the thread or the latest
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="example-card">
-        <mat-card-title-group>
-          <mat-card-title>Title of thread</mat-card-title>
-          <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
-        </mat-card-title-group>
-        <mat-card-content>
-          This can be the first post in the thread or the latest
-        </mat-card-content>
-
-      </mat-card>
-      <mat-card class="example-card">
-        <mat-card-title-group>
-          <mat-card-title>Title of thread</mat-card-title>
-          <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
-        </mat-card-title-group>
-        <mat-card-content>
-          This can be the first post in the thread or the latest
-        </mat-card-content>
-
-      </mat-card>
+      <!-- </a> -->
+      
     </mat-card-content>
-    <!-- <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions> -->
   </mat-card>
 </div>
