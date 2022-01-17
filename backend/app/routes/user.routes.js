@@ -10,7 +10,10 @@ module.exports = function(app) {
         next();
     });
     //get all users
-    app.get("/api/users", controller.getAllUsers);    
+    app.get("/api/users", controller.getAllUsers);  
+    
+    //get user by id
+    app.get("/api/users/:id", controller.getUserById);
 
     
     app.get("/api/test/all", controller.allAccess); 

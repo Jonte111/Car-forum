@@ -23,3 +23,9 @@ exports.getAllUsers = async(req, res) => {
     let data = await User.find()
     res.json(data)
 }
+
+exports.getUserById = async (req, res) => {
+    const id = req.params.id;
+    let data = await User.findById(id)
+    res.json(data)
+}
