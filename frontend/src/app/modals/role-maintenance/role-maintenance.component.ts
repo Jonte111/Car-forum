@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./role-maintenance.component.css']
 })
 export class RoleMaintenanceComponent implements OnInit {
-  searcheduser: any;
+  users: any;
   username!: string;
   roles!: Array<string>;
   moderator!: boolean;
@@ -77,9 +77,9 @@ export class RoleMaintenanceComponent implements OnInit {
     }
     this._searchUser.getUserByUserName(username).subscribe(
       res => {
-        this.searcheduser = res;
+        this.users = res;
         this.roles = res[0].roles;
-        this.moderatorBlockedOrg = this.searcheduser[0].moderatorBlocked;
+        this.moderatorBlockedOrg = this.users[0].moderatorBlocked;
         this.moderatorOrg = false;
         console.log("this.roles",this.roles)
         for (let i = 0; i < this.roles.length; i++) {
@@ -101,7 +101,8 @@ export class RoleMaintenanceComponent implements OnInit {
         console.log(err, 'error in search')
       }
     );
-  } 
+  }
+ 
 
   onUpdate() {
     console.log("click on update")
@@ -118,7 +119,7 @@ export class RoleMaintenanceComponent implements OnInit {
         }
         const body = { "roles": this.roles }
         console.log("body", body)
-        this._searchUser.updateUserById(this.searcheduser[0]._id, body) 
+        this._searchUser.updateUserById(this.users[0]._id, body) 
       } else {
         const index = this.roles.indexOf(this.moderatorId)
         if (index !== -1) {
@@ -126,12 +127,12 @@ export class RoleMaintenanceComponent implements OnInit {
         }
         const body = { "roles": this.roles }
         console.log("body", body)
-        this._searchUser.updateUserById(this.searcheduser[0]._id, body) 
+        this._searchUser.updateUserById(this.users[0]._id, body) 
       }
   
       const body = { "roles": this.roles}
       console.log("body", body)
-      this._searchUser.updateUserById(this.searcheduser[0]._id, body)  
+      this._searchUser.updateUserById(this.users[0]._id, body)  
     } else {
       if (this.moderator !== this.moderatorOrg) {
         Swal.fire('error', "You don't have permision to this role maintenence!", 'error')
@@ -144,7 +145,7 @@ export class RoleMaintenanceComponent implements OnInit {
     //update ban to ture or false
       const body = { "moderatorBlocked": this.moderatorBlocked }
       console.log("body",body)
-      this._searchUser.updateUserById(this.searcheduser[0]._id,body)          
+      this._searchUser.updateUserById(this.users[0]._id,body)          
     } else {
       if (this.moderatorBlocked !== this.moderatorBlockedOrg) {
         Swal.fire('error', "You don't have permision to ban!", 'error')
