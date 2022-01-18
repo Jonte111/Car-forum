@@ -13,6 +13,7 @@ exports.postThread = (req, res) => {
     // Create Thread
     const thread = new Thread({
         threadStarter: req.body.threadStarter,
+        category: req.body.category,
         title: req.body.title
     });
 
@@ -36,6 +37,22 @@ exports.findAll = (req, res) => {
           err.message || "Some error occurred while retrieving Threads."
       });
     else res.send(data);
+  });
+};
+
+exports.findAllByCategory = (req, res) => {
+  Thread.find({category: req.params.category}, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Thread with id ${req.params.category}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving Thread with id " + req.params.category
+        });
+      }
+    } else res.send(data);
   });
 };
 
