@@ -42,4 +42,9 @@ exports.getRoleById = async (req, res) => {
     res.json(data)
 }
 
+exports.getRoles= async (req, res) => {
+    let data = await Role.find()
+    res.json(data)
+}
+
 

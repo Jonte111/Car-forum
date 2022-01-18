@@ -11,7 +11,8 @@ export class AuthService {
   private _loginUrl = "/api/auth/signin";
   private _getAllUsersUrl = "/api/users";
   private _getUserByUserNameUrl = "/api/users/username";
-  private _getRoleByIdUrl = "/api/roles";
+  private _getRoles = "/api/roles";
+  private _updateUserByIdUrl = "api/users/update";
 
   constructor(private http: HttpClient,
     private _router: Router) { }
@@ -43,7 +44,18 @@ export class AuthService {
   }
 
   getRoleById(id: string) {
-    const url = this._getRoleByIdUrl + "/" + id
+    const url = this._getRoles + "/" + id
+    return this.http.get<any>(url);
+  }
+
+  updateUserById(id: string,body:object) {
+    const url = this._updateUserByIdUrl + "/" + id
+    console.log("body i service",body);    
+    return this.http.put<any>(url,body).subscribe(res =>{console.log(res)});
+  }
+  
+  getRoles() {
+    const url = this._getRoles 
     return this.http.get<any>(url);
   }
 

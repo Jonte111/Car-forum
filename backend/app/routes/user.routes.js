@@ -21,8 +21,11 @@ module.exports = function(app) {
     //get role by id
     app.get("/api/roles/:id", controller.getRoleById);
 
+    //get roles
+    app.get("/api/roles", controller.getRoles);
+
     
-    app.get("/api/test/all", controller.allAccess); 
+  /*   app.get("/api/test/all", controller.allAccess); 
 
     app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
 
@@ -36,5 +39,5 @@ module.exports = function(app) {
         "/api/test/admin",
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.adminBoard
-    );
+    ); */
 };

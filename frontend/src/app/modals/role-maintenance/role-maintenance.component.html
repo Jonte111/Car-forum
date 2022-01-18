@@ -18,8 +18,8 @@
       <div class="user"  *ngFor="let user of users">
         <div class="email">{{user.email}}</div>
         <div class="username" >{{user.username}}</div>
-        <input type="checkbox" name ="moderatorBlocked" [ngModel]="user.moderatorBlocked">
-        <input type="checkbox" name="moderator" [ngModel]="moderator">
+        <input type="checkbox" name ="moderatorBlocked" [checked]="user.moderatorBlocked" (change)="moderatorBlocked = !user.moderatorBlocked">
+        <input type="checkbox" name="moderator"  [(ngModel)]="moderator">
       </div>
     </div>
     <br>
