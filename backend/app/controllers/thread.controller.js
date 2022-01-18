@@ -13,6 +13,7 @@ exports.postThread = (req, res) => {
     // Create Thread
     const thread = new Thread({
         threadStarter: req.body.threadStarter,
+        category: req.body.category,
         title: req.body.title
     });
 
@@ -38,6 +39,19 @@ exports.findAll = (req, res) => {
     else res.send(data);
   });
 };
+
+// find by category
+exports.findAllByCategory = (req, res) => {
+  const category = req.body.category;
+  Thread.find(category, (err, data) => {
+    if(err)
+    res.status(500).send({
+      message:
+      err.message || "Some error occurred while retrieving Threads by Category."
+    });
+    else res.send(data);
+  });
+}
 
 exports.delete = (req, res) => {
     Thread.findByIdAndRemove(req.params.id, (err) => {
