@@ -7,6 +7,11 @@ module.exports = function(app) {
         next();
     });
 
+    app.get("/api/threads", controller.findAll);
+
+    // find thread by category
+    app.get("/api/threads/byCategory/:category", controller.findAllByCategory); // id or ccategory? 
+
     // Create a new Thread
     app.post("/api/thread/create", controller.postThread);
 

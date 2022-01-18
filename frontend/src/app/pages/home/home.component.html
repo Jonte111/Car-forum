@@ -1,35 +1,20 @@
-<div class="card-container">
-  
-  <a mat-button routerLink="forum/sportcars" class="sub-forum">
-    <mat-card class="forum-card">
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          Sport cars
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </a>
+<div class="category-container">
+  <mat-card class="outer-category-card">
+    <mat-card-content class="category-cards">
+      <!-- <a routerLink="/:id" class="route-link" > -->
+      <mat-card (click)="onSelectCategory(category)" class="category-card" *ngFor="let category of categories">
+          <img class="category-img" mat-card-image src={{category.img}} alt="Photo of a car">
 
-  <a mat-button routerLink="forum/electriccars" class="sub-forum">
-    <mat-card class="forum-card">
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          Electric cars
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </a>
+        <mat-card-title-group>
+          <mat-card-title>{{category.name}}</mat-card-title>
+          <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
+        </mat-card-title-group>
+        <mat-card-content>
+          <!-- <h4>Last comment in thread:</h4> {{category.threads[category.threads.length-1]}} -->
+        </mat-card-content>
+      </mat-card>
+      <!-- </a> -->
 
-  <a mat-button routerLink="forum/veterancars" class="sub-forum">
-    <mat-card class="forum-card">
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          Veteran cars
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </a>
+    </mat-card-content>
+  </mat-card>
 </div>
