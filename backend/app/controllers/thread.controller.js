@@ -39,6 +39,18 @@ exports.findAll = (req, res) => {
   });
 };
 
+exports.findUsersThreads = (req, res) => {
+  Thread.find({threadStarter: req.params.id})
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: err.message
+      })
+    })
+}
+
 exports.delete = (req, res) => {
     Thread.findByIdAndRemove(req.params.id, (err) => {
       if (err) {
