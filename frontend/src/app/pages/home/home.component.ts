@@ -16,9 +16,10 @@ export class HomeComponent implements OnInit {
     // this.getCategories().subscribe(data=> this.categories=data);
   }
 
-  onSelect(thread: any) {
+  onSelectCategory(category: any) {
     console.log("click")
-    this.router.navigate(['/forum/sportcars', thread.id])
+    console.log(category, "category in click")
+    this.router.navigate(['/forum', category._id])
   }
 
   getCategories() {

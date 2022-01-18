@@ -12,11 +12,11 @@ import { ThreadDetailComponent } from './pages/thread-detail/thread-detail.compo
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'aboutus', component: AboutUsComponent},
-  { path: 'forum', component: ForumComponent},
-  { path: 'forum/sportcars', component: SportcarsComponent},
-  { path: 'forum/sportcars/:id', component: ThreadDetailComponent},
-  { path: 'forum/electriccars', component: ElectriccarsComponent},
-  { path: 'forum/veterancars', component: VeterancarsComponent},
+  { path: 'forum/:id', component: ForumComponent},
+  // { path: 'forum/sportcars', component: SportcarsComponent},
+  // { path: 'forum/sportcars/:id', component: ThreadDetailComponent},
+  // { path: 'forum/electriccars', component: ElectriccarsComponent},
+  // { path: 'forum/veterancars', component: VeterancarsComponent},
   { path: 'myprofile', component: MyprofileComponent},
   { path: 'myprofile', component: MyprofileComponent},
 ];

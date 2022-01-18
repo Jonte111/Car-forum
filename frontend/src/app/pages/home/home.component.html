@@ -2,7 +2,7 @@
   <mat-card class="outer-category-card">
     <mat-card-content class="category-cards">
       <!-- <a routerLink="/:id" class="route-link" > -->
-      <mat-card (click)="onSelect(category)" class="category-card" *ngFor="let category of categories">
+      <mat-card (click)="onSelectCategory(category)" class="category-card" *ngFor="let category of categories">
           <img class="category-img" mat-card-image src={{category.img}} alt="Photo of a car">
 
         <mat-card-title-group>
