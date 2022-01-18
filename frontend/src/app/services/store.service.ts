@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { Injectable } from '@angular/core';
 export class StoreService {
   private urlToCreateThread = "api/thread/create";
   private urlToCreatePost = "api/post/create";
+  private urlToGetCategories = "api/categories";
   constructor(private http: HttpClient) { }
 
   createThread(threadToBeCreated: any) {
@@ -18,5 +20,8 @@ export class StoreService {
     return this.http.post(this.urlToCreatePost, postToBeCreated).subscribe(
       res => console.log(res, " res"),
     )
+  }
+  getCategories() {
+    return this.http.get(this.urlToGetCategories);
   }
 }
