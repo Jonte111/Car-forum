@@ -22,7 +22,11 @@ export class HomeComponent implements OnInit {
   }
 
   getCategories() {
-    this.categories = this._store.getCategories();
-    console.log(this.categories, "categories")
+    this._store.getCategories().subscribe(
+      res => {
+        this.categories = res,
+        console.log(this.categories, " categories")
+      }
+    );
   }
 }
