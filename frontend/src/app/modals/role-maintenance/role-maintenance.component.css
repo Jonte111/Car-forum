@@ -4,6 +4,12 @@
     gap: 1em;
     margin-top: 1em;
 }
+.emailLable{
+    width:200px;
+}
+.userNameLable{
+    width:150px;
+}
 .userList {
     display: flex;
     flex-direction: column;
@@ -18,3 +24,4 @@
     background-color: rgba(196, 196, 196, 0.1);
     border-radius: 5px;
 }
+
