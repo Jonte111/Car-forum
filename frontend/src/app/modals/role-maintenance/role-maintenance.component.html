@@ -7,23 +7,17 @@
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit" (click)="onSearch()">Search</button>
-    <br>  
-    <div class="listTitle">
-      <h2 >Email </h2>
-      <h2 >User Name </h2>
-      <h2 >Ban </h2>
-      <h2 >Moderator </h2>
-    </div>   
-    <div class="userList">
-      <div class="user"  *ngFor="let user of users">
-        <div class="email">{{user.email}}</div>
-        <div class="username" >{{user.username}}</div>
-        <input type="checkbox" name ="moderatorBlocked" [checked]="user.moderatorBlocked" (change)="moderatorBlocked = !user.moderatorBlocked">
-        <input type="checkbox" name="moderator"  [(ngModel)]="moderator">
-      </div>
+    <br>       
+    <div class="userList">   
+      <h2>Email </h2>
+      <div class="email">{{searcheduser[0].email}}</div>
+      <h2>User Name </h2>
+      <div class="username" >{{searcheduser[0].username}}</div>
+      <h2>Ban </h2>
+      <input type="checkbox" name ="moderatorBlocked" [checked]="searcheduser[0].moderatorBlocked" (change)="moderatorBlocked = !searcheduser[0].moderatorBlocked">
+      <h2>Moderator </h2>
+      <input type="checkbox" name="moderator"  [(ngModel)]="moderator">
     </div>
-    <br>
-   
     <br>
     <button mat-raised-button color="primary" type="submit" (click)="onUpdate()" >Update</button>
   </form>
