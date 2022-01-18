@@ -40,18 +40,21 @@ exports.findAll = (req, res) => {
   });
 };
 
-// find by category
 exports.findAllByCategory = (req, res) => {
-  const category = req.body.category;
-  Thread.find(category, (err, data) => {
-    if(err)
-    res.status(500).send({
-      message:
-      err.message || "Some error occurred while retrieving Threads by Category."
-    });
-    else res.send(data);
+  Thread.find({category: req.params.category}, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Thread with id ${req.params.category}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving Thread with id " + req.params.category
+        });
+      }
+    } else res.send(data);
   });
-}
+};
 
 exports.delete = (req, res) => {
     Thread.findByIdAndRemove(req.params.id, (err) => {
