@@ -27,6 +27,45 @@ exports.postThread = (req, res) => {
     });
 };
 
+exports.findAll = (req, res) => {
+  const title = req.body.title;
+  Thread.find(title, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Threads."
+      });
+    else res.send(data);
+  });
+};
+
+exports.findAllByCategory = (req, res) => {
+  Thread.find({category: req.params.category}, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Thread with id ${req.params.category}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving Thread with id " + req.params.category
+        });
+      }
+    } else res.send(data);
+  });
+};
+exports.findUsersThreads = (req, res) => {
+  Thread.find({threadStarter: req.params.id})
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: err.message
+      })
+    })
+}
+
 exports.delete = (req, res) => {
     Thread.findByIdAndRemove(req.params.id, (err) => {
       if (err) {
