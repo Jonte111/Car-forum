@@ -23,7 +23,6 @@ require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/thread.routes')(app);
 require('./app/routes/post.routes')(app);
-require('./app/routes/category.routes')(app);
 
 
 // set port, listen for requests 

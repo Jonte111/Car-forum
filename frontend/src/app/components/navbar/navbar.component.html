@@ -2,13 +2,15 @@
   <a mat-button routerLink=""><span><mat-icon>directions_car</mat-icon>CAR</span></a>
   <div class="title">Worlds biggest car forum</div>
   <div class="spacer"></div>
-  <!-- <a mat-button routerLink="forum">FORUM</a> -->
+  <a mat-button routerLink="forum">FORUM</a>
   <a mat-button routerLink="aboutus">About us</a>
   <a mat-button *ngIf="!_authService.signedIn()" (click)="openSignIn()">Sign in</a>
   <a mat-button *ngIf="!_authService.signedIn()" (click)="openRegister()">Register</a>
   <button mat-button *ngIf="_authService.signedIn()" [matMenuTriggerFor]="menu">My profile</button>
   <mat-menu #menu="matMenu">
     <a mat-button routerLink="myprofile">My profile</a>
+    <br>
+    <a mat-button *ngIf="_authService.roleMaintenance()" (click)="openRoleMaintenance()">Role maintenance</a>
     <br>
     <a mat-button (click)="_authService.signOutUser()">Sign out</a>
   </mat-menu>

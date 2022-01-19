@@ -6,6 +6,7 @@ import { ForumComponent } from './pages/forum/forum.component';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 import { ThreadDetailComponent } from './pages/thread-detail/thread-detail.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'aboutus', component: AboutUsComponent},
