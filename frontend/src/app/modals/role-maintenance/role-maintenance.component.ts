@@ -95,13 +95,8 @@ export class RoleMaintenanceComponent implements OnInit {
   }
  
 
-  onUpdate() {
-   // console.log("this.inLoggedUserIsAmin", this.inLoggedUserIsAmin);
-   // console.log("this.inLoggedUserIsModerator", this.inLoggedUserIsModerator); 
-    if (this.inLoggedUserIsAmin) {
-    //update role to moderator or not moderator
-     // console.log("moderator",this.moderator);
-      
+  onUpdate() { 
+    if (this.inLoggedUserIsAmin) {      
       if (this.moderator) {
         const index = this.roles.indexOf(this.moderatorId)
         if (index === -1) {
@@ -132,7 +127,7 @@ export class RoleMaintenanceComponent implements OnInit {
         ) 
       }      
      
-    } 
+    }     
 
     if (this.inLoggedUserIsModerator) {
       this.body={ "moderatorBlocked": this.moderatorBlocked } 
@@ -148,8 +143,7 @@ export class RoleMaintenanceComponent implements OnInit {
           }
         ) 
       }      
-    }
-   
+    }   
     this.onSearch()
   }
 

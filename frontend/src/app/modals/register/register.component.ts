@@ -34,7 +34,8 @@ export class RegisterComponent implements OnInit {
       email: this.email,
       username: this.username,
       password: this.password,
-      confirmPassword: this.confirmPassword
+      confirmPassword: this.confirmPassword,
+      moderatorBlocked:false
     }
     
     this._registerUser.signUpUser(registerInfo).subscribe(
