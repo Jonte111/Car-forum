@@ -10,15 +10,14 @@ import { StoreService } from 'src/app/services/store.service';
 export class CreateThreadComponent implements OnInit {
   title!: string;
   firstPost!: string;
-  categoryId!: string;
   
-  constructor(public _store: StoreService, @Inject(MAT_DIALOG_DATA) public data: any ) { }
+  constructor(public _store: StoreService, @Inject(MAT_DIALOG_DATA) public categoryId: any ) { }
 
   ngOnInit(): void {
   }
 
   onCreateThread() {
-    console.log(this.data, "data")
+    console.log(this.categoryId, " categoryId")
     if (!this.title || !this.firstPost) {
       return;
     }
@@ -26,11 +25,10 @@ export class CreateThreadComponent implements OnInit {
       threadStarter: localStorage.getItem('id'),
       title: this.title,
       category: this.categoryId,
-      // firstPost: this.firstPost
     }
     
     this._store.createThread(createdThreadInformation);
-
+    
 
     
   }

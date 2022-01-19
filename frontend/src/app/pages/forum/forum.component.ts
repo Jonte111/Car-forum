@@ -15,7 +15,9 @@ export class ForumComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     public dialog: MatDialog,
-    private router: Router, private _store: StoreService) { }
+    private router: Router,
+    private _store: StoreService
+  ) { }
 
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('id')!;
@@ -24,7 +26,7 @@ export class ForumComponent implements OnInit {
   }
   openCreateThread() {
     this.dialog.open(CreateThreadComponent, {
-      data: "test"
+      data: this.categoryId
     }
     );
   }
