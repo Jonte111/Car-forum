@@ -26,10 +26,13 @@ export class ForumComponent implements OnInit {
     this.getThreads(this.categoryId);
   }
   openCreateThread() {
-    this.dialog.open(CreateThreadComponent, {
+    const dialog = this.dialog.open(CreateThreadComponent, {
       data: this.categoryId
     }
     );
+    dialog.afterClosed().subscribe(() => {
+      this.getThreads(this.categoryId);
+    });
   }
 
   onSelectThread(thread: any) {
