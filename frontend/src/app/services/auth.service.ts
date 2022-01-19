@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   username!: string;
-  password!: string;
+  password!: string;  
   private _loginUrl = "/api/auth/signin";
   private _getAllUsersUrl = "/api/users";
   private _getUserByUserNameUrl = "/api/users/username";
@@ -25,6 +25,17 @@ export class AuthService {
   signedIn() {
     return !!localStorage.getItem('token')
   }
+
+  roleMaintenance(): Boolean {
+    if ((localStorage.getItem('inLoggedUserIsAmin') === "true")
+      || (localStorage.getItem('inLoggedUserIsModerator') === "true"))
+    {
+      return true
+    } else {
+      return false
+    }  
+  }
+
   signOutUser() {
     this._router.navigate(['/']);
     localStorage.clear();
@@ -50,7 +61,6 @@ export class AuthService {
 
   updateUserById(id: string,body:object) {
     const url = this._updateUserByIdUrl + "/" + id
-    console.log("body i service",body);    
     return this.http.put<any>(url,body).subscribe(res =>{console.log(res)});
   }
   
