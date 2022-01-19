@@ -37,7 +37,6 @@ export class SignInComponent implements OnInit {
     this._auth.signInUser(userToBeSignedIn).subscribe(
       res => {
         //Token and username is stored in localStorage
-        console.log(res)
         localStorage.setItem('token', res.accessToken);
         localStorage.setItem('username', res.username);
         localStorage.setItem('id', res.id);

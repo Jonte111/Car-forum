@@ -24,17 +24,11 @@ export class RoleMaintenanceComponent implements OnInit {
   constructor(private _searchUser: AuthService) { }
 
   ngOnInit(): void {
-    //check inloggeduser role
-   // this.inLoggedUser = localStorage.getItem('username') || "";
-    if (localStorage.getItem('inLoggedUserIsAmin') === "true")
-    {
-      this.inLoggedUserIsModerator = true;
-    }
-
-    if (localStorage.getItem('inLoggedUserIsModerator') === "true")
-    {
-      this.inLoggedUserIsAmin = true;
-    }
+    this.inLoggedUserIsModerator = (localStorage.getItem('inLoggedUserIsModerator') === "true")
+    this.inLoggedUserIsAmin = (localStorage.getItem('inLoggedUserIsAmin') === "true")
+    console.log("this.inLoggedUserIsAmin", this.inLoggedUserIsAmin); 
+    console.log("this.inLoggedUserIsModerator",this.inLoggedUserIsModerator);    
+    
     //get motoratorId 
     this._searchUser.getRoles().subscribe(
       res => {
@@ -112,24 +106,26 @@ export class RoleMaintenanceComponent implements OnInit {
         this.body = { "roles": this.roles }
 
       } 
-      //update user
-      if (this.moderator !== this.moderatorOrg) {
-        this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
-          res => {
-            console.log(this.body);            
-            console.log("res", res.message)
-            Swal.fire("Success", "Update successfully", "success")
-          },
-          err => {
-            Swal.fire('error', "error in update", 'error')
-            console.log(err, 'error in update')
-          }
-        ) 
-      }      
+      if (!this.inLoggedUserIsModerator) {
+        //update user
+        if (this.moderator !== this.moderatorOrg) {
+          this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
+            res => {
+              console.log(this.body);
+              console.log("res", res.message)
+              Swal.fire("Success", "Update successfully", "success")
+            },
+            err => {
+              Swal.fire('error', "error in update", 'error')
+              console.log(err, 'error in update')
+            }
+          )
+        }     
+      }     
      
     }     
 
-    if (this.inLoggedUserIsModerator) {
+    if (this.inLoggedUserIsModerator && !this.inLoggedUserIsAmin) {
       console.log(this.moderatorBlocked )
       this.body={ "moderatorBlocked": this.moderatorBlocked } 
       if (this.moderatorBlocked !== this.moderatorBlockedOrg) {
@@ -143,8 +139,24 @@ export class RoleMaintenanceComponent implements OnInit {
           }
         ) 
       }      
-    }   
-    this.onSearch()
+    }       
+
+    if (this.inLoggedUserIsModerator && this.inLoggedUserIsAmin) {
+      this.body = { "roles": this.roles, "moderatorBlocked": this.moderatorBlocked }
+      console.log(this.body);      
+      if (this.moderatorBlocked !== this.moderatorBlockedOrg || this.moderator !== this.moderatorOrg){
+        this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
+          res => {
+            Swal.fire("Success", "Update successfully", "success")
+          },
+          err => {
+            Swal.fire('error', "error in update", 'error')
+            console.log(err, 'error in update')
+          }
+        )
+      }    
+    }
+    this.onSearch()    
   }
 
 }
