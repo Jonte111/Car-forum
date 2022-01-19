@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -11,7 +11,11 @@ export class CreateThreadComponent implements OnInit {
   title!: string;
   firstPost!: string;
   
-  constructor(public _store: StoreService, @Inject(MAT_DIALOG_DATA) public categoryId: any ) { }
+  constructor(
+    public _store: StoreService,
+    @Inject(MAT_DIALOG_DATA) public categoryId: any,
+    public dialog: MatDialog,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -28,9 +32,7 @@ export class CreateThreadComponent implements OnInit {
     }
     
     this._store.createThread(createdThreadInformation);
-    
-
-    
+    this.dialog.closeAll();
   }
 
 }

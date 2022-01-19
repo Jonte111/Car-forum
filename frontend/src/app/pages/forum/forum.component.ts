@@ -13,7 +13,8 @@ export class ForumComponent implements OnInit {
   categoryId!: string;
   public threads: any = [];
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     public dialog: MatDialog,
     private router: Router,
     private _store: StoreService
