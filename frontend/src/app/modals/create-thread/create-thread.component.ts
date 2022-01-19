@@ -9,7 +9,8 @@ import { StoreService } from 'src/app/services/store.service';
 export class CreateThreadComponent implements OnInit {
   title!: string;
   firstPost!: string;
-
+  categoryId!: string;
+  
   constructor(public _store: StoreService) { }
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class CreateThreadComponent implements OnInit {
     const createdThreadInformation = {
       threadStarter: localStorage.getItem('id'),
       title: this.title,
+      category: this.categoryId,
       // firstPost: this.firstPost
     }
     
