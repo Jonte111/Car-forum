@@ -61,16 +61,15 @@ export class RoleMaintenanceComponent implements OnInit {
     }
     this._searchUser.getUserByUserName(username).subscribe(
       res => {
-       // console.log("res", res);
         if (res.length === 0) {
           Swal.fire('error', "No user found", 'error')
           return
         }
-        //console.log("res",res);
         
         this.users = res;
         this.roles = res[0].roles;
         this.moderatorBlockedOrg = this.users[0].moderatorBlocked;
+        this.moderatorBlocked = this.moderatorBlockedOrg
         this.moderatorOrg = false;
        // console.log("this.roles",this.roles)
         for (let i = 0; i < this.roles.length; i++) {
@@ -117,6 +116,7 @@ export class RoleMaintenanceComponent implements OnInit {
       if (this.moderator !== this.moderatorOrg) {
         this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
           res => {
+            console.log(this.body);            
             console.log("res", res.message)
             Swal.fire("Success", "Update successfully", "success")
           },
@@ -130,11 +130,11 @@ export class RoleMaintenanceComponent implements OnInit {
     }     
 
     if (this.inLoggedUserIsModerator) {
+      console.log(this.moderatorBlocked )
       this.body={ "moderatorBlocked": this.moderatorBlocked } 
       if (this.moderatorBlocked !== this.moderatorBlockedOrg) {
         this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
           res => {
-            console.log("res", res.message)
             Swal.fire("Success", "Update successfully", "success")
           },
           err => {
