@@ -9,8 +9,8 @@ const Thread = mongoose.model(
     "Thread",
     new mongoose.Schema({
         threadStarter: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
+            type: String,
+            required: true
         },
         title: {
             type: String,
