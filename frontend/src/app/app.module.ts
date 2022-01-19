@@ -24,6 +24,7 @@ import { RegisterComponent } from './modals/register/register.component';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 
 import { AuthService } from './services/auth.service';
+import { RoleMaintenanceComponent } from './modals/role-maintenance/role-maintenance.component';
 import { CreateThreadComponent } from './modals/create-thread/create-thread.component';
 import { DeleteAccountComponent } from './modals/delete-account/delete-account.component';
 import { ThreadDetailComponent } from './pages/thread-detail/thread-detail.component';
@@ -38,6 +39,7 @@ import { ThreadDetailComponent } from './pages/thread-detail/thread-detail.compo
     SignInComponent,
     RegisterComponent,
     MyprofileComponent,
+    RoleMaintenanceComponent,
     CreateThreadComponent,
     DeleteAccountComponent,
     ThreadDetailComponent
