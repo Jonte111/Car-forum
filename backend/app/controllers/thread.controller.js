@@ -85,7 +85,6 @@ exports.delete = (req, res) => {
     }
 
     if (thread) {
-
       if (req.body.threadStarter == "") {
         return res.status(400).send({
           message: "threadStarter cannot be empty"
