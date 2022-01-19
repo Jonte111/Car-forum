@@ -23,7 +23,10 @@ export class ForumComponent implements OnInit {
     this.getThreads(this.categoryId);
   }
   openCreateThread() {
-    this.dialog.open(CreateThreadComponent);
+    this.dialog.open(CreateThreadComponent, {
+      data: "test"
+    }
+    );
   }
 
   onSelectThread(thread: any) {
