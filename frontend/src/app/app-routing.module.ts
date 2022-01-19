@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'aboutus', component: AboutUsComponent},
   { path: 'forum/:id', component: ForumComponent},
+  { path: 'forum/thread/:id', component: ThreadDetailComponent},
   // { path: 'forum/sportcars', component: SportcarsComponent},
   // { path: 'forum/sportcars/:id', component: ThreadDetailComponent},
   // { path: 'forum/electriccars', component: ElectriccarsComponent},

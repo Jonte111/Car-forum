@@ -28,7 +28,7 @@ export class ForumComponent implements OnInit {
 
   onSelectThread(thread: any) {
     console.log("click")
-    this.router.navigate(['/forum/sportcars', thread.id])
+    this.router.navigate(['/forum/thread', thread._id])
   }
 
   getThreads(categoryId:any) {
