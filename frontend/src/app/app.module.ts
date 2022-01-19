@@ -21,9 +21,6 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ForumComponent } from './pages/forum/forum.component';
 import { SignInComponent } from './modals/sign-in/sign-in.component';
 import { RegisterComponent } from './modals/register/register.component';
-import { SportcarsComponent } from './pages/sportcars/sportcars.component';
-import { ElectriccarsComponent } from './pages/electriccars/electriccars.component';
-import { VeterancarsComponent } from './pages/veterancars/veterancars.component';
 import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 
 import { AuthService } from './services/auth.service';
@@ -40,9 +37,6 @@ import { ThreadDetailComponent } from './pages/thread-detail/thread-detail.compo
     ForumComponent,
     SignInComponent,
     RegisterComponent,
-    SportcarsComponent,
-    ElectriccarsComponent,
-    VeterancarsComponent,
     MyprofileComponent,
     CreateThreadComponent,
     DeleteAccountComponent,

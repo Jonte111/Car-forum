@@ -24,4 +24,10 @@ export class StoreService {
   getCategories() {
     return this.http.get(this.urlToGetCategories);
   }
+
+  getThreads(categoryId: any) {
+    let urlToGetThreads = "/api/threads/byCategory/" + categoryId;
+
+    return this.http.get(urlToGetThreads);
+  }
 }
