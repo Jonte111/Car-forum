@@ -1,3 +1,4 @@
+import { ArrayType } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
@@ -12,44 +13,28 @@ export class RoleMaintenanceComponent implements OnInit {
   username!: string;
   roles!: Array<string>;
   moderator!: boolean;
-  moderatorOrg!: boolean;
   moderatorId!: string
-  moderatorBlockedOrg!: boolean;
   moderatorBlocked!: boolean;
-  inLoggedUser!: string;
   inLoggedUserIsAmin!: boolean;
   inLoggedUserIsModerator!: boolean;
-  inLoggedUserRoleId!: [];
+  moderatorBlockedOrg!: boolean;
+  moderatorOrg!: boolean;  
+  body!: any;
 
   constructor(private _searchUser: AuthService) { }
 
   ngOnInit(): void {
     //check inloggeduser role
-    this.inLoggedUser = localStorage.getItem('username') || "";
-   // console.log("this.inLoggedUser", this.inLoggedUser)
-    this._searchUser.getUserByUserName(this.inLoggedUser).subscribe(
-      res => {
-        this.inLoggedUserRoleId = res[0].roles;
-        for (let i = 0; i < this.inLoggedUserRoleId.length; i++) {
-          this._searchUser.getRoleById(this.inLoggedUserRoleId[i]).subscribe(
-            res1 => {
-              if (res1.name === "moderator") {
-                this.inLoggedUserIsModerator = true;
-              }
-              if (res1.name === "admin") {
-                this.inLoggedUserIsAmin = true;
-              }
-            },
-            err1 => {
-              console.log(err1, 'error in search roles')
-            }
-          )
-        }
-      },
-      err => {
-        console.log(err, 'error in search roles')
-      }
-    )
+   // this.inLoggedUser = localStorage.getItem('username') || "";
+    if (localStorage.getItem('inLoggedUserIsAmin') === "true")
+    {
+      this.inLoggedUserIsModerator = true;
+    }
+
+    if (localStorage.getItem('inLoggedUserIsModerator') === "true")
+    {
+      this.inLoggedUserIsAmin = true;
+    }
     //get motoratorId 
     this._searchUser.getRoles().subscribe(
       res => {
@@ -93,7 +78,7 @@ export class RoleMaintenanceComponent implements OnInit {
             res1 => { 
               if (res1.name === "moderator") {                
                 this.moderator = true
-                this.moderatorOrg = true
+                this.moderatorOrg  = true
               }            
             },
             err1 => {
@@ -112,7 +97,7 @@ export class RoleMaintenanceComponent implements OnInit {
 
   onUpdate() {
    // console.log("this.inLoggedUserIsAmin", this.inLoggedUserIsAmin);
-   // console.log("this.inLoggedUserIsModerator", this.inLoggedUserIsModerator);    
+   // console.log("this.inLoggedUserIsModerator", this.inLoggedUserIsModerator); 
     if (this.inLoggedUserIsAmin) {
     //update role to moderator or not moderator
      // console.log("moderator",this.moderator);
@@ -122,41 +107,50 @@ export class RoleMaintenanceComponent implements OnInit {
         if (index === -1) {
           this.roles.push(this.moderatorId)
         }
-        const body = { "roles": this.roles }
-        this._searchUser.updateUserById(this.users[0]._id, body) 
+        this.body={ "roles": this.roles }
+        
+        
       } else {
         const index = this.roles.indexOf(this.moderatorId)
         if (index !== -1) {
           this.roles.splice(index,1)
         }
-        const body = { "roles": this.roles }
-        this._searchUser.updateUserById(this.users[0]._id, body) 
-      }
-  
-      const body = { "roles": this.roles}
-      this._searchUser.updateUserById(this.users[0]._id, body)  
-    } else {
+        this.body = { "roles": this.roles }
+
+      } 
+      //update user
       if (this.moderator !== this.moderatorOrg) {
-        Swal.fire('error', "You don't have permision to this role maintenence!", 'error')
-        this.onSearch()
-        return        
-      }
-    }
+        this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
+          res => {
+            console.log("res", res.message)
+            Swal.fire("Success", "Update successfully", "success")
+          },
+          err => {
+            Swal.fire('error', "error in update", 'error')
+            console.log(err, 'error in update')
+          }
+        ) 
+      }      
+     
+    } 
 
     if (this.inLoggedUserIsModerator) {
-    //update ban to ture or false
-      const body = { "moderatorBlocked": this.moderatorBlocked }
-     // console.log("body",body)
-      this._searchUser.updateUserById(this.users[0]._id,body)          
-    } else {
+      this.body={ "moderatorBlocked": this.moderatorBlocked } 
       if (this.moderatorBlocked !== this.moderatorBlockedOrg) {
-        Swal.fire('error', "You don't have permision to ban!", 'error')
-        console.log("You have no permision to ban")
-        this.onSearch()
-        return 
-      }
-
+        this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
+          res => {
+            console.log("res", res.message)
+            Swal.fire("Success", "Update successfully", "success")
+          },
+          err => {
+            Swal.fire('error', "error in update", 'error')
+            console.log(err, 'error in update')
+          }
+        ) 
+      }      
     }
+   
+    this.onSearch()
   }
 
 }

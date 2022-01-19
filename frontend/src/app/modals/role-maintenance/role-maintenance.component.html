@@ -11,15 +11,15 @@
     <div class="listTitle">
       <h2 class="emailLable" >Email </h2>
       <h2 class="userNameLable" >User Name </h2>
-      <h2 >Ban </h2>
-      <h2 >Moderator </h2>
+      <h2 *ngIf="inLoggedUserIsModerator">Ban </h2>
+      <h2 *ngIf="inLoggedUserIsAmin">Moderator </h2>
     </div>   
     <div class="userList">
       <div class="user"  *ngFor="let user of users">
         <div class="email">{{user.email}}</div>
         <div class="username" >{{user.username}}</div>
-        <input type="checkbox" name ="moderatorBlocked" [checked]="user.moderatorBlocked" (change)="moderatorBlocked = !user.moderatorBlocked">
-        <input type="checkbox" name="moderator"  [(ngModel)]="moderator">
+        <input type="checkbox" name ="moderatorBlocked" *ngIf="inLoggedUserIsModerator" [checked]="user.moderatorBlocked" (change)="moderatorBlocked = !user.moderatorBlocked">
+        <input type="checkbox" name="moderator" *ngIf="inLoggedUserIsAmin" [(ngModel)]="moderator">
       </div>
     </div>
     <br>

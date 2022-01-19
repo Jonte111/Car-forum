@@ -61,7 +61,7 @@ export class AuthService {
 
   updateUserById(id: string,body:object) {
     const url = this._updateUserByIdUrl + "/" + id
-    return this.http.put<any>(url,body).subscribe(res =>{console.log(res)});
+    return this.http.put<any>(url,body);
   }
   
   getRoles() {
