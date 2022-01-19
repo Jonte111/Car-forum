@@ -14,4 +14,10 @@ export class StoreService {
     )
       
   }
+
+  getThreads(categoryId: any) {
+    let urlToGetThreads = "/api/threads/byCategory/" + categoryId;
+
+    return this.http.get(urlToGetThreads);
+  }
 }
