@@ -1,22 +1,35 @@
-<h1>Forum id {{categoryId}}</h1>
-<!-- <app-create-thread [categoryId]="categoryId"></app-create-thread> -->
-<div class="my-profile-container">
-  <mat-card class="created-threads-card">
-    <button mat-raised-button class="create-thread-button" color="primary" (click)="openCreateThread()">Create
-      thread</button>
-    <mat-card-content class="thread-cards">
-      <!-- <a routerLink="/:id" class="route-link" > -->
-      <mat-card (click)="onSelectThread(thread)" class="thread-card" *ngFor="let thread of threads">
-        <mat-card-title-group>
-          <mat-card-title>{{thread.title}}</mat-card-title>
-          <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
-        </mat-card-title-group>
-        <mat-card-content>
-          <h4>Last comment in thread:</h4> {{thread.posts[thread.posts.length-1]}}
-        </mat-card-content>
-      </mat-card>
-      <!-- </a> -->
+<div class="card-container">
 
-    </mat-card-content>
-  </mat-card>
+  <a mat-button routerLink="sportcars" class="sub-forum">
+    <mat-card class="forum-card">
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          Sport cars
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </a>
+
+  <a mat-button routerLink="electriccars" class="sub-forum">
+    <mat-card class="forum-card">
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          Electric cars
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </a>
+
+  <a mat-button routerLink="veterancars" class="sub-forum">
+    <mat-card class="forum-card">
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          Veteran cars
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </a>
 </div>
