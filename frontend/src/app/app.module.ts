@@ -27,7 +27,6 @@ import { AuthService } from './services/auth.service';
 import { CreateThreadComponent } from './modals/create-thread/create-thread.component';
 import { DeleteAccountComponent } from './modals/delete-account/delete-account.component';
 import { ThreadDetailComponent } from './pages/thread-detail/thread-detail.component';
-import { RoleMaintenanceComponent } from './modals/role-maintenance/role-maintenance.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +40,7 @@ import { RoleMaintenanceComponent } from './modals/role-maintenance/role-mainten
     MyprofileComponent,
     CreateThreadComponent,
     DeleteAccountComponent,
-    ThreadDetailComponent,
-    RoleMaintenanceComponent
+    ThreadDetailComponent
   ],
   imports: [
     BrowserModule,
