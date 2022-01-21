@@ -6,9 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class StoreService {
+  
   private urlToCreateThread = "api/thread/create";
   private urlToCreatePost = "api/post/create";
   private urlToGetCategories = "api/categories";
+  private urlToGetThreadById = "/api/threads/";
   constructor(private http: HttpClient) { }
 
   createThread(threadToBeCreated: any) {
@@ -29,5 +31,13 @@ export class StoreService {
     let urlToGetThreads = "/api/threads/byCategory/" + categoryId;
 
     return this.http.get(urlToGetThreads);
+  }
+
+  getThreadById(threadId: string) {
+    const urlToGetThreadByIdWithId = this.urlToGetThreadById + threadId;
+    console.log(urlToGetThreadByIdWithId)
+    return this.http.get(urlToGetThreadByIdWithId).subscribe(
+      res => console.log(res, " res"),
+    )
   }
 }
