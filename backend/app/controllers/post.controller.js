@@ -28,6 +28,31 @@ exports.createPost = (req, res ) => {
     });
 };
 
+exports.findAll = (req, res) => {
+    const title = req.body.title;
+    Post.find(title, (err, data) => {
+        if(err)
+        res.status(500).send({
+            message: err.message || "Some error occured while retrieving Posts."
+        });
+        else res.send(data);
+    });
+};
+
+exports.findUsersPosts = (req, res) => {
+    Post.find({
+      creator: req.params.id
+    })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: err.message
+      })
+    })
+  }
+
 exports.delete = (req, res) => {
     Post.findByIdAndRemove(req.params.id, (err) => {
         if(err) {

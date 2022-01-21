@@ -42,6 +42,7 @@ exports.findAll = (req, res) => {
   });
 };
 
+
 exports.findOneThread = (req, res) => {
   Thread.findById(req.params.id, (err, data) => {
     if(err) {

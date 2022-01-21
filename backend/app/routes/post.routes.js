@@ -7,7 +7,12 @@ module.exports = function(app) {
         next();
     });
 
+    app.get("/api/posts", controller.findAll); // get all posts
+
+    app.get("/api/my-posts/:id", controller.findUsersPosts); // this is my posts
+
     // create a new Post
     app.post("/api/post/create", controller.createPost);
+
     app.delete("/api/post/delete/:id", controller.delete);
 }
