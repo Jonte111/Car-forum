@@ -2,6 +2,10 @@ const config = require("../config/auth.config");
 const db = require("../models");
 const Post = db.post;
 
+// bring blockedUsers list from Thread
+// check through it
+// if in blocked -> don't create post
+
 exports.createPost = (req, res ) => {
     // Validable request
     if(!req.body) {
@@ -17,7 +21,7 @@ exports.createPost = (req, res ) => {
         postText: req.body.postText
     });
 
-    // Save Thread in the database
+    // Save Post in the database
     Post.create(post, (err, data) => {
         if(err)
         res.status(500).send({
