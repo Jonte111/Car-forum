@@ -26,8 +26,6 @@ export class RoleMaintenanceComponent implements OnInit {
   ngOnInit(): void {
     this.inLoggedUserIsModerator = (localStorage.getItem('inLoggedUserIsModerator') === "true")
     this.inLoggedUserIsAmin = (localStorage.getItem('inLoggedUserIsAmin') === "true")
-    console.log("this.inLoggedUserIsAmin", this.inLoggedUserIsAmin);
-    console.log("this.inLoggedUserIsModerator", this.inLoggedUserIsModerator);
 
     //get motoratorId 
     this._searchUser.getRoles().subscribe(
