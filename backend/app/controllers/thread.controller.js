@@ -17,7 +17,8 @@ exports.postThread = (req, res) => {
   const thread = new Thread({
     threadStarter: req.body.threadStarter,
     category: req.body.category,
-    title: req.body.title
+    title: req.body.title,
+    firstPost: req.body.firstPost
   });
 
   // Save Thread in the database
