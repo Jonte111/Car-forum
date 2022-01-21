@@ -11,6 +11,7 @@ export class StoreService {
   private urlToCreatePost = "api/post/create";
   private urlToGetCategories = "api/categories";
   private urlToGetThreadById = "/api/thread/";
+  private urlToGetToPost = "/api/post/create";
   constructor(private http: HttpClient) { }
 
   createThread(threadToBeCreated: any) {
@@ -29,7 +30,6 @@ export class StoreService {
 
   getThreads(categoryId: any) {
     let urlToGetThreads = "/api/threads/byCategory/" + categoryId;
-
     return this.http.get(urlToGetThreads);
   }
 
@@ -37,5 +37,9 @@ export class StoreService {
     let urlToGetThreadByIdWithId = this.urlToGetThreadById + threadId;
     console.log(urlToGetThreadByIdWithId)
     return this.http.get(urlToGetThreadByIdWithId)
+  }
+  
+  createPostInThread(createdPost: any) {
+    
   }
 }
