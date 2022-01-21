@@ -42,6 +42,22 @@ exports.findAll = (req, res) => {
   });
 };
 
+exports.findOneThread = (req, res) => {
+  Thread.findById(req.params.id, (err, data) => {
+    if(err) {
+      if(err.kind === "not_found") {
+        res.status(400).send({
+          message: `Not found Thread with id ${req.params.id}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving Tutorial with id " + req.params.id
+        });
+      }
+    } else res.send(data)
+  });
+}
+
 exports.findAllByCategory = (req, res) => {
   Thread.find({
     category: req.params.category
