@@ -9,7 +9,7 @@ import { StoreService } from 'src/app/services/store.service';
 export class ThreadDetailComponent implements OnInit {
 
   threadId!: string;
-  // firstPost!: string;
+  firstPost!: string;
   threadObject!: any;
 
   constructor(
@@ -20,8 +20,19 @@ export class ThreadDetailComponent implements OnInit {
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('id')!;
     this.threadId = id;
-    this.threadObject = this._store.getThreadById(this.threadId);
+    this.threadObject = this._store.getThreadById(this.threadId).subscribe(
+      res => {
+        console.log(res, " res")
+        this.threadObject = res;
+        // this.firstPost = res.firstPost;
+        this.firstPost = this.threadObject.firstPost;
+      }
+
+    );
     console.log("this.threadObject", this.threadObject);
+    console.log("this.threadObject.firstPost", this.threadObject.firstPost);
+    // this.threadObject = this.threadObject.firstPost;
+    // console.log(this.threadObject.firstPost, "this.threadObject.firstPost");
     
   }
 
