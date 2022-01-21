@@ -39,7 +39,7 @@ exports.findAll = (req, res) => {
         message: err.message || "Some error occurred while retrieving Threads."
       });
     else res.send(data);
-  });
+  }).populate('posts');
 };
 
 exports.findOneThread = (req, res) => {
@@ -55,7 +55,7 @@ exports.findOneThread = (req, res) => {
         });
       }
     } else res.send(data)
-  });
+  }).populate('posts');
 }
 
 exports.findAllByCategory = (req, res) => {
@@ -73,7 +73,7 @@ exports.findAllByCategory = (req, res) => {
         });
       }
     } else res.send(data);
-  });
+  }).populate('posts');
 };
 exports.findUsersThreads = (req, res) => {
   Thread.find({
