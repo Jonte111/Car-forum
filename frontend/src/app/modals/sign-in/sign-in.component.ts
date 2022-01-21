@@ -42,7 +42,6 @@ export class SignInComponent implements OnInit {
         localStorage.setItem('username', res.username);
         localStorage.setItem('id', res.id);
         console.log(res.accessToken)
-        console.log(res.username)
         this.saveRole()
         //Closes open modals
         this.dialog.closeAll();
@@ -62,7 +61,7 @@ export class SignInComponent implements OnInit {
     localStorage.setItem('inLoggedUserIsAmin', "false");
     this.inLoggedUser = localStorage.getItem('username') || "";
     this._auth.getUserByUserName(this.inLoggedUser).subscribe(
-      res => {
+      res => {        
         this.inLoggedUserRoleId = res[0].roles;
         for (let i = 0; i < this.inLoggedUserRoleId.length; i++) {
           this._auth.getRoleById(this.inLoggedUserRoleId[i]).subscribe(

@@ -10,8 +10,13 @@ module.exports = function(app) {
     app.get("/api/threads", controller.findAll);
 
     // find thread by category
-    app.get("/api/threads/byCategory/:category", controller.findAllByCategory); // id or ccategory? 
-    app.get("/api/threads/:id", controller.findUsersThreads);
+    app.get("/api/threads/byCategory/:category", controller.findAllByCategory); 
+    app.get("/api/my-threads/:id", controller.findUsersThreads); // this is my threads
+
+    app.get("/api/thread/:id", controller.findOneThread); // find one thread
+
+
+
 
     // Create a new Thread
     app.post("/api/thread/create", controller.postThread);
