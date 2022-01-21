@@ -14,7 +14,8 @@ exports.createPost = (req, res ) => {
     const post = new Post({
         threadId: req.body.threadId,
         creator: req.body.creator,
-        postText: req.body.postText
+        postText: req.body.postText,
+        username: req.body.username
     });
 
     // Save Thread in the database

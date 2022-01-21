@@ -48,6 +48,7 @@ export class ThreadDetailComponent implements OnInit {
 
     let post = {
       threadId: this.threadId,
+      username: localStorage.getItem('username'),
       creator: localStorage.getItem('id'),
       postText: this.createdPost
     }
