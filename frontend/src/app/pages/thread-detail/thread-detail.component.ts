@@ -12,6 +12,8 @@ export class ThreadDetailComponent implements OnInit {
   firstPost!: string;
   threadObject!: any;
   createdPost!: string;
+  posts!: any;
+  threadTitle!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,8 +27,9 @@ export class ThreadDetailComponent implements OnInit {
       res => {
         console.log(res, " res")
         this.threadObject = res;
-        // this.firstPost = res.firstPost;
         this.firstPost = this.threadObject.firstPost;
+        this.posts = this.threadObject.posts;
+        this.threadTitle = this.threadObject.title;
       }
 
     );
@@ -40,18 +43,18 @@ export class ThreadDetailComponent implements OnInit {
   createPost() {
     console.log("createPost click");
     if (!this.createdPost) {
-      console.log("is false", this.createdPost, "this.createdPost");
       return;
     }
-    console.log("is true", this.createdPost, "this.createdPost");
 
     let post = {
-      threadId: 1,
-      creator: 1,
-      postText: 1
+      threadId: this.threadId,
+      creator: localStorage.getItem('id'),
+      postText: this.createdPost
     }
 
-    this._store.createPostInThread(post)
+    this._store.createPostInThread(post).subscribe(
+      res => console.log(res)
+    );
   }
 
 }

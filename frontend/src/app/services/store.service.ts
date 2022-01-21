@@ -40,6 +40,7 @@ export class StoreService {
   }
   
   createPostInThread(createdPost: any) {
-    
+    console.log(createdPost, "createdPost");
+    return this.http.post(this.urlToGetToPost, createdPost);
   }
 }
