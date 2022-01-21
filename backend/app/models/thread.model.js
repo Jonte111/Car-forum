@@ -16,6 +16,10 @@ const Thread = mongoose.model(
             type: String,
             required: true
         },
+        firstPost: {
+            type: String,
+            required: true
+        },
         category: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Category"
