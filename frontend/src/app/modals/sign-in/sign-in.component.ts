@@ -43,7 +43,7 @@ export class SignInComponent implements OnInit {
         localStorage.setItem('id', res.id);
         console.log(res.accessToken)
         console.log(res.username)
-        this.saveRole()
+        //this.saveRole()
         //Closes open modals
         this.dialog.closeAll();
       },
