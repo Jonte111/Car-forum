@@ -115,7 +115,6 @@ exports.getMyPosts = (req, res) => {
 }
 
 exports.findAllByThreadId = (req, res) => {
-    console.log(req.params.id, "req.params.id");
     Post.find({
         threadId: req.params.id
     })
