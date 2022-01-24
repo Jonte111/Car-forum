@@ -60,7 +60,7 @@ export class ThreadDetailComponent implements OnInit {
     );
 
     this.getPosts();
-    // this.createdPost = "";
+    this.createdPost = "";
   }
 
   getPosts() {
