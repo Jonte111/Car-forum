@@ -133,3 +133,30 @@ exports.delete = (req, res) => {
   })
 
 };
+
+exports.update = (req, res) => {
+  if(!req.body) {
+    return res.status(400).send({
+       message: "Data to update can not be empty!"
+    });
+  }
+
+  const id = req.params.id;
+
+  Thread.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  .then(data => {
+    if(!data) {
+      res.status(404).send({
+        message: `Cannot update Thread with id=${id}. Maybe Thread was not found!`
+      });
+    } else {
+      res.send({  message: "Thread was updated successfully."  })
+    }
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: "Error updating Thread with id=" + id
+    });
+  });
+
+};
