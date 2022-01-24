@@ -17,7 +17,7 @@ exports.createPost = (req, res ) => {
         postText: req.body.postText
     });
 
-    // Save Thread in the database
+    // Save Post in the database
     Post.create(post, (err, data) => {
         if(err)
         res.status(500).send({
