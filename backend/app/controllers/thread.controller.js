@@ -122,9 +122,16 @@ exports.delete = (req, res) => {
                 message: "Could not delete Thread with id "
               });
             }
-          } else res.send({
-            message: `Thread was deleted successfully!`
-          });
+          } else {
+            const title = req.body.title;
+  Thread.find(title, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving Threads."
+      });
+    else res.send(data);
+  });
+          }
         });
 
       }
