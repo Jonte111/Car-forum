@@ -1,0 +1,18 @@
+<div class="my-posts-container">
+  <mat-card-content class="thread-cards">
+    <mat-card-header>
+      <mat-card-title>Delete your post</mat-card-title>
+    </mat-card-header>
+    <!-- <a routerLink="/:id" class="route-link" > -->
+    <mat-card *ngFor="let post of posts" class="outer-post-card">
+      <mat-card-title-group>
+        <mat-card-title>{{post.title}}</mat-card-title>
+        <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
+      </mat-card-title-group>
+      <mat-card-content>
+        <h4>Thread:</h4> {{post.threadId}}
+      </mat-card-content>
+      <button mat-raised-button color="warn" (click)="onDeletePost(post._id)">Delete</button>
+    </mat-card>
+    <!-- </a> -->
+  </mat-card-content>
