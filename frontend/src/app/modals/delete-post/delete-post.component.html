@@ -1,5 +1,5 @@
 <div class="my-posts-container">
-  <mat-card-content class="thread-cards">
+  <mat-card-content class="post-cards">
     <mat-card-header>
       <mat-card-title>Delete your post</mat-card-title>
     </mat-card-header>
@@ -7,11 +7,12 @@
     <mat-card *ngFor="let post of posts" class="outer-post-card">
       <mat-card-title-group>
         <mat-card-title>{{post.postText}}</mat-card-title>
+        <mat-card-title>{{post.postedTime | date: 'yyyy/MM/dd HH:mm'}}</mat-card-title>
         <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
       </mat-card-title-group>
-      <mat-card-content>
+      <!-- <mat-card-content>
         <h4>Thread:</h4> {{post.threadId}}
-      </mat-card-content>
+      </mat-card-content> -->
       <button mat-raised-button color="warn" (click)="onDeletePost(post._id)">Delete</button>
     </mat-card>
     <!-- </a> -->
