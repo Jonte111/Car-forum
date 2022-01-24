@@ -15,7 +15,7 @@ module.exports = function (app) {
 
     app.get("/api/thread/:id", controller.findOneThread); // find one thread
 
-
+    app.put("/api/thread/update/:id", controller.update); // update thread by id
 
 
     // Create a new Thread
