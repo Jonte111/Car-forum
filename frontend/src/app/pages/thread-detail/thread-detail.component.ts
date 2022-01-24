@@ -14,6 +14,7 @@ export class ThreadDetailComponent implements OnInit {
   createdPost!: string;
   posts!: any;
   threadTitle!: string;
+  threadStarterUsername!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,18 +24,19 @@ export class ThreadDetailComponent implements OnInit {
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('id')!;
     this.threadId = id;
-    this.threadObject = this._store.getThreadById(this.threadId).subscribe(
+    this._store.getThreadById(this.threadId).subscribe(
       res => {
         console.log(res, " res")
         this.threadObject = res;
         this.firstPost = this.threadObject.firstPost;
         // this.posts = this.threadObject.posts;
         this.threadTitle = this.threadObject.title;
+        this.threadStarterUsername = this.threadObject.threadStarterUsername;
+        console.log("this.threadObject", this.threadObject);
+        console.log("this.threadObject.firstPost", this.threadObject.firstPost);
       }
 
     );
-    console.log("this.threadObject", this.threadObject);
-    console.log("this.threadObject.firstPost", this.threadObject.firstPost);
     // this.threadObject = this.threadObject.firstPost;
     // console.log(this.threadObject.firstPost, "this.threadObject.firstPost");
     this.getPosts();
@@ -58,6 +60,7 @@ export class ThreadDetailComponent implements OnInit {
     );
 
     this.getPosts();
+    // this.createdPost = "";
   }
 
   getPosts() {
