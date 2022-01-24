@@ -28,6 +28,8 @@ import { CreateThreadComponent } from './modals/create-thread/create-thread.comp
 import { DeleteAccountComponent } from './modals/delete-account/delete-account.component';
 import { ThreadDetailComponent } from './pages/thread-detail/thread-detail.component';
 import { RoleMaintenanceComponent } from './modals/role-maintenance/role-maintenance.component';
+import { DeletePostComponent } from './modals/delete-post/delete-post.component';
+import { DeleteThreadComponent } from './modals/delete-thread/delete-thread.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { RoleMaintenanceComponent } from './modals/role-maintenance/role-mainten
     CreateThreadComponent,
     DeleteAccountComponent,
     ThreadDetailComponent,
-    RoleMaintenanceComponent
+    RoleMaintenanceComponent,
+    DeletePostComponent,
+    DeleteThreadComponent
   ],
   imports: [
     BrowserModule,

@@ -34,6 +34,35 @@ export class StoreService {
     return this.http.get(urlToGetThreads);
   }
 
+  getThreadsByUserId(id: any) {
+    let urlToGetThreadsByUserId = "/api/my-threads/" + id;  
+    return this.http.get(urlToGetThreadsByUserId);
+  }
+
+  deleteMyThread(id: any, threadStarter: any) {
+    const body = {     
+      body: threadStarter
+    };
+    let urlDeleteMyThread = "/api/thread/delete/" + id;
+    console.log("urlDeleteMyThread", urlDeleteMyThread)
+    console.log("body", body)
+    return this.http.delete(urlDeleteMyThread,body);
+  }
+
+  getPostsByUserId(id: any) {
+    let urlToGetPostsByUserId = "/api/my-posts/" + id;
+    return this.http.get(urlToGetPostsByUserId);
+  }
+
+  deleteMyPost(id: any, creator: any) {   
+    const body = {
+      body: creator
+    };
+    let urlDeleteMyPost = "/api/post/delete/" + id;
+    console.log("urlDeleteMyPost", urlDeleteMyPost)
+    return this.http.delete(urlDeleteMyPost,body);
+  }
+
   getThreadById(threadId: string) {
     let urlToGetThreadByIdWithId = this.urlToGetThreadById + threadId;
     console.log(urlToGetThreadByIdWithId)

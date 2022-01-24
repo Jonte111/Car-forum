@@ -1,26 +1,18 @@
 <div class="my-profile-container">
-  <mat-card-content class="thread-cards">
-    <mat-card-header>
-      <mat-card-title>Your created threads</mat-card-title>
-    </mat-card-header>
-    <!-- <a routerLink="/:id" class="route-link" > -->
-    <mat-card *ngFor="let thread of tempThreads" class="outer-thread-card">
-      <mat-card (click)="onSelect(thread)" class="thread-card">
-        <mat-card-title-group>
-          <mat-card-title>{{thread.title}}</mat-card-title>
-          <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
-        </mat-card-title-group>
-        <mat-card-content>
-          <h4>Last comment in thread:</h4> {{thread.posts[thread.posts.length-1]}}
-        </mat-card-content>
-      </mat-card>
-      <button mat-raised-button color="warn">Delete</button>
-    </mat-card>
-    <!-- </a> -->
-  </mat-card-content>
-
-
-  <h1>If you want to delete your account with stored data</h1>
-  <button mat-raised-button class="delete-account-button" color="primary" (click)="openDeleteAccount()">Delete
-    account</button>
+  <div class="myProfile-card">
+    <h1 >Delete your threads</h1>
+    <button mat-raised-button class="delete-button" color="primary" (click)="openDeleteThread()">Delete
+      thread</button>
+  </div>
+  <div class="myProfile-card">
+    <h1 >Delete your posts</h1>
+    <button mat-raised-button class="delete-button" color="primary" (click)="openDeletePost()">Delete
+      post</button>
+  </div>
+  <div class="myProfile-card">
+    <h1 >Delete your account</h1>
+    <button mat-raised-button class="delete-button" color="primary" (click)="openDeleteAccount()">Delete
+      account</button>
+  </div>
+ 
 </div>

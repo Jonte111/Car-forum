@@ -14,4 +14,5 @@ module.exports = function(app) {
     //Get posts by threadId
     app.get("/api/post/:id", controller.findAllByThreadId); 
 
+    app.get("/api/my-posts/:id", controller.getMyPosts)
 }

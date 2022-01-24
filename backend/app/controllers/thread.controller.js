@@ -77,7 +77,7 @@ exports.findAllByCategory = (req, res) => {
 };
 exports.findUsersThreads = (req, res) => {
   Thread.find({
-      threadStarter: req.params.id
+      threadStarter: req.body.threadStarter
     })
     .then(data => {
       res.send(data);
@@ -102,7 +102,6 @@ exports.delete = (req, res) => {
     }
 
     if (thread) {
-
       if (req.body.threadStarter == "") {
         return res.status(400).send({
           message: "threadStarter cannot be empty"
@@ -116,16 +115,26 @@ exports.delete = (req, res) => {
           if (err) {
             if (err.kind === "not_found") {
               return res.status(404).send({
-                message: `Not found Thread.`
+                message: "Not found Thread."
               });
             } else {
               return res.status(500).send({
                 message: "Could not delete Thread with id "
               });
             }
-          } else res.send({
-            message: `Thread was deleted successfully!`
-          });
+          } else {
+            Thread.find({
+              threadStarter: req.body.threadStarter
+            })
+            .then(data => {
+              res.send(data);
+            })
+            .catch(err => {
+              res.status(500).send({
+                message: err.message
+              })
+            })
+          }
         });
 
       }
