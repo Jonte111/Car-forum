@@ -28,7 +28,7 @@ export class ThreadDetailComponent implements OnInit {
         console.log(res, " res")
         this.threadObject = res;
         this.firstPost = this.threadObject.firstPost;
-        this.posts = this.threadObject.posts;
+        // this.posts = this.threadObject.posts;
         this.threadTitle = this.threadObject.title;
       }
 
@@ -37,7 +37,7 @@ export class ThreadDetailComponent implements OnInit {
     console.log("this.threadObject.firstPost", this.threadObject.firstPost);
     // this.threadObject = this.threadObject.firstPost;
     // console.log(this.threadObject.firstPost, "this.threadObject.firstPost");
-    
+    this.getPosts();
   }
 
   createPost() {
@@ -56,6 +56,17 @@ export class ThreadDetailComponent implements OnInit {
     this._store.createPostInThread(post).subscribe(
       res => console.log(res)
     );
+
+    this.getPosts();
+  }
+
+  getPosts() {
+    this._store.getPostsByThreadId(this.threadId).subscribe(
+      res => {
+        console.log(res, "posts")
+        this.posts = res;
+      }
+    )
   }
 
 }

@@ -10,3 +10,31 @@
 /* .sub-forum{
 justify-items: center;
 } */
+
+.my-profile-container{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  row-gap: 50px;
+  margin: 10px;
+}
+.thread-card {
+  background-color: rgb(214, 214, 214);
+  margin-bottom: 10px;
+}
+.thread-card:hover {
+  cursor: pointer;
+}
+.create-thread-button{
+  margin-bottom: 15px;
+}
+
+.route-link{
+  text-decoration: none;
+}
+
+.outer-thread-card{
+  background-color: rgb(155, 155, 155);
+  margin-bottom: 10px;
+}

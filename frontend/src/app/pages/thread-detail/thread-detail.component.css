@@ -2,3 +2,21 @@
   background-color: rgb(0, 212, 0);
   color: whitesmoke;
 }
+
+.thread-card {
+  background-color: rgb(214, 214, 214);
+  margin-bottom: 10px;
+}
+
+.create-thread-button{
+  margin-bottom: 15px;
+}
+
+.route-link{
+  text-decoration: none;
+}
+
+.outer-thread-card{
+  background-color: rgb(155, 155, 155);
+  margin-bottom: 10px;
+}

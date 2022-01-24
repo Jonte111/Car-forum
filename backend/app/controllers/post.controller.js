@@ -44,3 +44,17 @@ exports.delete = (req, res) => {
         } else res.send({ message: `Post was deleted successfully!` });
     });
 };
+
+exports.findAllByThreadId = (req, res) => {
+    console.log(req.params.id, "req.params.id");
+    Post.find({
+        threadId: req.params.id
+    })
+    .then(data => {
+        res.send(data);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message
+        })
+    })
+}

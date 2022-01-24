@@ -2,14 +2,17 @@
 
 <mat-card>
   <mat-card-title>Thread title: {{threadTitle}}</mat-card-title>
+  <mat-card-title>Created by: {{threadTitle}}</mat-card-title>
   <mat-card-content class="thread-cards">
-
-    <mat-card>  <h2>First post: {{firstPost}}</h2></mat-card>
+    <mat-card class="thread-card">
+      <mat-card-title class="thread-card">First post:</mat-card-title>
+      <mat-card-content>
+        {{firstPost}}
+      </mat-card-content>
+    </mat-card>
   <!-- <a routerLink="/:id" class="route-link" > -->
   <mat-card class="thread-card" *ngFor="let post of posts">
-    <mat-card-title-group>
-     Post creator {{post.creator}}
-    </mat-card-title-group>
+      <mat-card-title>Posted by: {{post.username}}</mat-card-title>
     <mat-card-content>{{post.postText}}
       <!-- <h4>Last comment in thread:</h4> {{thread.posts[thread.posts.length-1]}} -->
     </mat-card-content>
@@ -17,12 +20,6 @@
   <!-- </a> -->
 
 </mat-card-content>
-
-
-
-
-
-
   <!-- -------------------Create post--------------------------- -->
   <mat-card>
     <mat-card-title>Create post</mat-card-title>
