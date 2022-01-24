@@ -33,7 +33,7 @@ export class DeletePostComponent implements OnInit {
   }
   onDeletePost(threadId: string) {
     let body = { "creator": this.userId }
-    this._store.deleteMyThread(threadId, body).subscribe(
+    this._store.deleteMyPost(threadId, body).subscribe(
       res => {
         console.log("res post", res)
         this.posts = res,

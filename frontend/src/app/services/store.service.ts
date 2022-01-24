@@ -51,10 +51,13 @@ export class StoreService {
     return this.http.get(urlToGetPostsByUserId);
   }
 
-  deleteMyPost(id: any) {    
+  deleteMyPost(id: any, creator: any) {   
+    const body = {
+      body: creator
+    };
     let urlDeleteMyPost = "/api/post/delete/" + id;
     console.log("urlDeleteMyPost", urlDeleteMyPost)
-    return this.http.delete(urlDeleteMyPost);
+    return this.http.delete(urlDeleteMyPost,body);
   }
 
 }
