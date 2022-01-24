@@ -91,6 +91,13 @@ exports.signin = (req, res) => {
                 message: "Bad Credentials..."
             });
         }
+
+        if(user.moderatorBlocked) {
+            return res.status(403).send({
+                accessToken: null,
+                message: "This account has been blocked by moderator."
+            });
+        }
     
 
         let token = jwt.sign({ id: user.id }, config.secret, {
