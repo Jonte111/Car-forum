@@ -115,7 +115,7 @@ exports.delete = (req, res) => {
           if (err) {
             if (err.kind === "not_found") {
               return res.status(404).send({
-                message: `Not found Thread.`
+                message: "Not found Thread."
               });
             } else {
               return res.status(500).send({
