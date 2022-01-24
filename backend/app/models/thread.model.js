@@ -12,6 +12,10 @@ const Thread = mongoose.model(
             type: String,
             required: true
         },
+        threadStarterUsername: {
+            type: String,
+            required: true 
+        },
         title: {
             type: String,
             required: true

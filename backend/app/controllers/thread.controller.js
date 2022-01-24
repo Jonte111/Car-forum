@@ -18,7 +18,8 @@ exports.postThread = (req, res) => {
     threadStarter: req.body.threadStarter,
     category: req.body.category,
     title: req.body.title,
-    firstPost: req.body.firstPost
+    firstPost: req.body.firstPost,
+    threadStarterUsername: req.body.threadStarterUsername
   });
 
   // Save Thread in the database
