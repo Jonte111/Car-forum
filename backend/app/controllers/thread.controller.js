@@ -77,7 +77,7 @@ exports.findAllByCategory = (req, res) => {
 };
 exports.findUsersThreads = (req, res) => {
   Thread.find({
-      threadStarter: req.params.id
+      threadStarter: req.body.threadStarter
     })
     .then(data => {
       res.send(data);
@@ -123,14 +123,17 @@ exports.delete = (req, res) => {
               });
             }
           } else {
-            const title = req.body.title;
-  Thread.find(title, (err, data) => {
-    if (err)
-      res.status(500).send({
-        message: err.message || "Some error occurred while retrieving Threads."
-      });
-    else res.send(data);
-  });
+            Thread.find({
+              threadStarter: req.body.threadStarter
+            })
+            .then(data => {
+              res.send(data);
+            })
+            .catch(err => {
+              res.status(500).send({
+                message: err.message
+              })
+            })
           }
         });
 
