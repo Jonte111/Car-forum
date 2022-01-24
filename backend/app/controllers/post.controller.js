@@ -43,3 +43,17 @@ exports.delete = (req, res) => {
         } else res.send({ message: `Post was deleted successfully!` });
     });
 };
+
+exports.getMyPosts = (req, res) => {
+    Post.find({
+        creator: req.params.id
+    })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message
+            })
+        })
+}

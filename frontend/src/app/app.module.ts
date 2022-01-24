@@ -29,6 +29,7 @@ import { DeleteAccountComponent } from './modals/delete-account/delete-account.c
 import { ThreadDetailComponent } from './pages/thread-detail/thread-detail.component';
 import { RoleMaintenanceComponent } from './modals/role-maintenance/role-maintenance.component';
 import { DeletePostComponent } from './modals/delete-post/delete-post.component';
+import { DeleteThreadComponent } from './modals/delete-thread/delete-thread.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DeletePostComponent } from './modals/delete-post/delete-post.component'
     DeleteAccountComponent,
     ThreadDetailComponent,
     RoleMaintenanceComponent,
-    DeletePostComponent
+    DeletePostComponent,
+    DeleteThreadComponent
   ],
   imports: [
     BrowserModule,

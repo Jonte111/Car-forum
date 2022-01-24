@@ -10,4 +10,5 @@ module.exports = function(app) {
     // create a new Post
     app.post("/api/post/create", controller.createPost);
     app.delete("/api/post/delete/:id", controller.delete);
+    app.get("/api/my-posts/:id", controller.getMyPosts)
 }

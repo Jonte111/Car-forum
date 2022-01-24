@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { StoreService } from 'src/app/services/store.service';
 import { DeletePostComponent } from 'src/app/modals/delete-post/delete-post.component';
+import { DeleteThreadComponent } from 'src/app/modals/delete-thread/delete-thread.component';
 
 @Component({
   selector: 'app-myprofile',
@@ -11,10 +12,10 @@ import { DeletePostComponent } from 'src/app/modals/delete-post/delete-post.comp
   styleUrls: ['./myprofile.component.css']
 })
 export class MyprofileComponent implements OnInit {
-  public threads: any = [];
+ /*  public threads: any = [];
   userId!: string;
   message!: string;
-  
+   */
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -22,11 +23,11 @@ export class MyprofileComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.userId = localStorage.getItem("id") || "";
+    /* this.userId = localStorage.getItem("id") || "";
     console.log("this.userId", this.userId);    
-    this.getThreadsByUserId(this.userId);
+    this.getThreadsByUserId(this.userId); */
   }
-  
+  /*
   getThreadsByUserId(userId: string) {
     this._store.getThreadsByUserId(userId).subscribe(
       res => {
@@ -51,15 +52,18 @@ export class MyprofileComponent implements OnInit {
     )
     
   }
-
+ */
+  openDeleteThread() {
+    this.dialog.open(DeleteThreadComponent)
+  }
   openDeletePost() {
     this.dialog.open(DeletePostComponent)
   }
   openDeleteAccount() {
     this.dialog.open(DeleteAccountComponent);
   }
-  onSelect(thread: any) {
+  /* onSelect(thread: any) {
     console.log("click")
     //this.router.navigate(['/forum/sportcars', thread.id])
-  }
+  } */
 }

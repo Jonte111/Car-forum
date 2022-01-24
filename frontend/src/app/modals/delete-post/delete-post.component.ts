@@ -27,7 +27,7 @@ export class DeletePostComponent implements OnInit {
     this._store.getPostsByUserId(userId).subscribe(
       res => {
         this.posts = res,
-          console.log(this.posts, " this.threads get threads")
+         console.log(this.posts, " this.threads get threads")
       }
     );
   }
