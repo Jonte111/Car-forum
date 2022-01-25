@@ -14,7 +14,8 @@ exports.createPost = (req, res ) => {
     const post = new Post({
         threadId: req.body.threadId,
         creator: req.body.creator,
-        postText: req.body.postText
+        postText: req.body.postText,
+        username: req.body.username
     });
 
     // Save Post in the database
@@ -107,6 +108,19 @@ exports.getMyPosts = (req, res) => {
             res.send(data);
         })
         .catch(err => {
+            res.status(500).send({
+                message: err.message
+            })
+        })
+}
+
+exports.findAllByThreadId = (req, res) => {
+    Post.find({
+        threadId: req.params.id
+    })
+        .then(data => {
+            res.send(data);
+        }).catch(err => {
             res.status(500).send({
                 message: err.message
             })

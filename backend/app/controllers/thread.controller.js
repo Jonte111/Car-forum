@@ -18,7 +18,8 @@ exports.postThread = (req, res) => {
     threadStarter: req.body.threadStarter,
     category: req.body.category,
     title: req.body.title,
-    firstPost: req.body.firstPost
+    firstPost: req.body.firstPost,
+    threadStarterUsername: req.body.threadStarterUsername
   });
 
   // Save Thread in the database
@@ -39,7 +40,7 @@ exports.findAll = (req, res) => {
         message: err.message || "Some error occurred while retrieving Threads."
       });
     else res.send(data);
-  });
+  }).populate('posts');
 };
 
 exports.findOneThread = (req, res) => {
@@ -55,7 +56,7 @@ exports.findOneThread = (req, res) => {
         });
       }
     } else res.send(data)
-  });
+  }).populate('posts');
 }
 
 exports.findAllByCategory = (req, res) => {
@@ -73,7 +74,7 @@ exports.findAllByCategory = (req, res) => {
         });
       }
     } else res.send(data);
-  });
+  }).populate('posts');
 };
 exports.findUsersThreads = (req, res) => {
   Thread.find({

@@ -4,6 +4,7 @@ import { CreateThreadComponent } from 'src/app/modals/create-thread/create-threa
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { StoreService } from 'src/app/services/store.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -17,7 +18,8 @@ export class ForumComponent implements OnInit {
     private route: ActivatedRoute,
     public dialog: MatDialog,
     private router: Router,
-    private _store: StoreService
+    private _store: StoreService,
+    public _authService: AuthService
   ) { }
 
   ngOnInit(): void {

@@ -29,7 +29,8 @@ export class CreateThreadComponent implements OnInit {
       threadStarter: localStorage.getItem('id'),
       title: this.title,
       category: this.categoryId,
-      firstPost: this.firstPost
+      firstPost: this.firstPost,
+      threadStarterUsername: localStorage.getItem('username')
     }
     
     this._store.createThread(createdThreadInformation);
