@@ -2,7 +2,7 @@
 <!-- <app-create-thread [categoryId]="categoryId"></app-create-thread> -->
 <div class="my-profile-container">
   <mat-card class="created-threads-card">
-    <button mat-raised-button class="create-thread-button" color="primary" (click)="openCreateThread()">Create
+    <button mat-raised-button class="create-thread-button" *ngIf="_authService.signedIn()" color="primary" (click)="openCreateThread()">Create
       thread</button>
     <mat-card-content class="thread-cards">
       <!-- <a routerLink="/:id" class="route-link" > -->

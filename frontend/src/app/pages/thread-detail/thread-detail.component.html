@@ -21,7 +21,7 @@
 
 </mat-card-content>
   <!-- -------------------Create post--------------------------- -->
-  <mat-card>
+  <mat-card *ngIf="_authService.signedIn()">
     <mat-card-title>Create post</mat-card-title>
     <form class="create-post">
       <mat-form-field class="post-field" appearance="fill">

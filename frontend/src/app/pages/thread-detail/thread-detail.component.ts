@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { StoreService } from 'src/app/services/store.service';
 @Component({
   selector: 'app-thread-detail',
@@ -18,7 +19,8 @@ export class ThreadDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private _store: StoreService
+    private _store: StoreService,
+    public _authService: AuthService
   ) { }
 
   ngOnInit(): void {
