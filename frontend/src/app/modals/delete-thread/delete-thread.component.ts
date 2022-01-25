@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { StoreService } from 'src/app/services/store.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-delete-thread',
@@ -11,7 +13,6 @@ import { StoreService } from 'src/app/services/store.service';
 export class DeleteThreadComponent implements OnInit {
   public threads: any = [];
   userId!: string;
-  message!: string;
 
   constructor(
     public dialog: MatDialog,
@@ -30,8 +31,9 @@ export class DeleteThreadComponent implements OnInit {
         console.log("userId", userId);
         this.threads = res;
         console.log("res", res);
-        if (!res) {
-          this.message = "You don't have any thread"
+        if (this.threads.length === 0) {
+          Swal.fire('info', "You don't have any thread", 'info')
+          this.dialog.closeAll();
         }
         console.log(this.threads, " this.threads get threads")
       }

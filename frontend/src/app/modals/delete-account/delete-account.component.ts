@@ -56,4 +56,8 @@ export class DeleteAccountComponent implements OnInit {
         () => console.log('HTTP request completed.')
       );
   }
+
+  onClose() {
+      this.dialog.closeAll()
+  }
 }

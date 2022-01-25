@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from 'src/app/services/store.service';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-delete-post',
@@ -26,8 +27,12 @@ export class DeletePostComponent implements OnInit {
   getPostsByUserId(userId: string) {
     this._store.getPostsByUserId(userId).subscribe(
       res => {
-        this.posts = res,
-         console.log(this.posts, " this.threads get threads")
+        this.posts = res;
+        if (this.posts.length === 0) {
+          Swal.fire('info', "You don't have any post", 'info')
+          this.dialog.closeAll();
+        }
+        console.log(this.posts, " this.threads get threads")
       }
     );
   }
@@ -36,12 +41,10 @@ export class DeletePostComponent implements OnInit {
     this._store.deleteMyPost(threadId, body).subscribe(
       res => {
         console.log("res post", res)
-        this.posts = res,
-          console.log(this.posts, " this.posts get posts")
-      }
+        this.posts = res;       
+        console.log(this.posts, " this.posts get posts")
+      } 
     )
-
   }
-
 
 }
