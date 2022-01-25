@@ -1,4 +1,8 @@
-<div class="my-profile-container">
+
+<div class="my-profile-container">   
+  <button mat-icon-button aria-label="close dialog" class="close-icon" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
   <mat-card-content class="thread-cards">
     <mat-card-header>
       <mat-card-title>Your created threads</mat-card-title>
@@ -15,7 +19,7 @@
         </mat-card-content>
       </mat-card>
       <button mat-raised-button color="warn" (click)="onDeleteThread(thread._id)">Delete</button>
-    </mat-card>
+    </mat-card>    
     <!-- </a> -->
   </mat-card-content>
 

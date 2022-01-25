@@ -25,3 +25,14 @@
     border-radius: 5px;
 }
 
+.close-icon{
+  position: absolute;
+  top:3px;
+  right: 3px;
+  padding: 5px;
+  color:red;
+  line-height: 5px;
+  min-width: auto;
+  justify-self: right;
+}
+

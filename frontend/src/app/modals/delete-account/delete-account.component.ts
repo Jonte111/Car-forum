@@ -57,7 +57,7 @@ export class DeleteAccountComponent implements OnInit {
       );
   }
 
-  onClose() {
+/*   onClose() {
       this.dialog.closeAll()
-  }
+  } */
 }

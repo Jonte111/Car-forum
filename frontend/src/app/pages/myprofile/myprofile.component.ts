@@ -12,10 +12,6 @@ import { DeleteThreadComponent } from 'src/app/modals/delete-thread/delete-threa
   styleUrls: ['./myprofile.component.css']
 })
 export class MyprofileComponent implements OnInit {
- /*  public threads: any = [];
-  userId!: string;
-  message!: string;
-   */
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -23,47 +19,17 @@ export class MyprofileComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    /* this.userId = localStorage.getItem("id") || "";
-    console.log("this.userId", this.userId);    
-    this.getThreadsByUserId(this.userId); */
+   
   }
-  /*
-  getThreadsByUserId(userId: string) {
-    this._store.getThreadsByUserId(userId).subscribe(
-      res => {
-        console.log("userId",userId);        
-        this.threads = res;
-        console.log("res", res);
-        if (!res) {
-          this.message ="You don't have any thread"
-        }
-        console.log(this.threads, " this.threads get threads")
-      }
-    );
-  }
-  onDeleteThread(threadId: string) {
-    let body = { "threadStarter": this.userId}
-    this._store.deleteMyThread(threadId,body).subscribe(
-      res => {
-        console.log("res thread",res)
-        this.threads = res,
-        console.log(this.threads, " this.threads get threads")
-      }
-    )
-    
-  }
- */
+
   openDeleteThread() {
-    this.dialog.open(DeleteThreadComponent)
+    this.dialog.open(DeleteThreadComponent,{ panelClass: ["my-dialog"] })
   }
   openDeletePost() {
-    this.dialog.open(DeletePostComponent)
+    this.dialog.open(DeletePostComponent, { panelClass: ["my-dialog"] })
   }
   openDeleteAccount() {
-    this.dialog.open(DeleteAccountComponent);
+    this.dialog.open(DeleteAccountComponent,{ panelClass: ["my-dialog"] });
   }
-  /* onSelect(thread: any) {
-    console.log("click")
-    //this.router.navigate(['/forum/sportcars', thread.id])
-  } */
+ 
 }
