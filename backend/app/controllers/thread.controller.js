@@ -77,7 +77,7 @@ exports.findAllByCategory = (req, res) => {
 };
 exports.findUsersThreads = (req, res) => {
   Thread.find({
-      threadStarter: req.body.threadStarter
+      threadStarter: req.params.id
     })
     .then(data => {
       res.send(data);
