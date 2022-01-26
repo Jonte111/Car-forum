@@ -67,4 +67,15 @@ export class AuthService {
     return this.http.get<any>(url);
   }
 
+  isModerator() {
+    console.log("moderator", localStorage.getItem('inLoggedUserIsModerator'));
+    
+    return localStorage.getItem('inLoggedUserIsModerator') === "true";
+  }
+
+  isAdmin() {
+    return localStorage.getItem('inLoggedUserIsAmin') === "true";
+
+  }
+
 }

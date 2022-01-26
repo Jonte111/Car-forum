@@ -12,5 +12,14 @@
     <a mat-button *ngIf="_authService.roleMaintenance()" (click)="openRoleMaintenance()">Role maintenance</a>
     <br>
     <a mat-button (click)="_authService.signOutUser()">Sign out</a>
+    <mat-list>
+      <mat-list-item>Roles:</mat-list-item>
+      <mat-list-item role="listitem">User</mat-list-item>
+      <mat-list-item role="listitem" *ngIf="_authService.isModerator()">Moderator</mat-list-item>
+      <mat-list-item role="listitem" *ngIf="_authService.isAdmin()">Admin</mat-list-item>
+      <!-- <mat-list-item role="listitem">Item 1</mat-list-item>
+      <mat-list-item role="listitem">Item 2</mat-list-item>
+      <mat-list-item role="listitem">Item 3</mat-list-item> -->
+    </mat-list>
   </mat-menu>
 </mat-toolbar>

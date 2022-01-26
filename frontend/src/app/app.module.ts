@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -60,7 +61,8 @@ import { DeleteThreadComponent } from './modals/delete-thread/delete-thread.comp
     MatCardModule,
     MatInputModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
