@@ -17,7 +17,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
-import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ForumComponent } from './pages/forum/forum.component';
 import { SignInComponent } from './modals/sign-in/sign-in.component';
 import { RegisterComponent } from './modals/register/register.component';
@@ -36,7 +35,6 @@ import { DeleteThreadComponent } from './modals/delete-thread/delete-thread.comp
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    AboutUsComponent,
     ForumComponent,
     SignInComponent,
     RegisterComponent,
