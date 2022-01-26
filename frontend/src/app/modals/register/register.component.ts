@@ -47,8 +47,8 @@ export class RegisterComponent implements OnInit {
         this.wasAnError = false;
         this.dialog.closeAll();
         this._router.navigate(['/']);
-        Swal.fire("Success", "Register successfully", "success")
         console.log(res)
+        Swal.fire("Success", "Register successfully", "success")
       },
       err => {
         this.wasAnError = true;

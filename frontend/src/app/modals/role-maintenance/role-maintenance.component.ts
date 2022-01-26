@@ -45,13 +45,13 @@ export class RoleMaintenanceComponent implements OnInit {
   }
 
   onSearch() {
-    const username = this.username;
+   
     //console.log("username", username)    
     if (!this.username) {
       Swal.fire('error', "You have to input username to search", 'error')
       return
     }
-    this._searchUser.getUserByUserName(username).subscribe(
+     this._searchUser.getUserByUserName(this.username).subscribe(
       res => {
         if (res.length === 0) {
           Swal.fire('error', "No user found", 'error')
@@ -60,17 +60,20 @@ export class RoleMaintenanceComponent implements OnInit {
 
         this.users = res;
         this.roles = res[0].roles;
+        this.moderatorBlocked = this.users[0].moderatorBlocked;
         this.moderatorBlockedOrg = this.users[0].moderatorBlocked;
-        this.moderatorBlocked = this.moderatorBlockedOrg
         this.moderatorOrg = false;
+        this.moderator = false;
         // console.log("this.roles",this.roles)
         for (let i = 0; i < this.roles.length; i++) {
-          this._searchUser.getRoleById(this.roles[i]).subscribe(
+           this._searchUser.getRoleById(this.roles[i]).subscribe(
             res1 => {
               if (res1.name === "moderator") {
                 this.moderator = true
                 this.moderatorOrg = true
               }
+              console.log(" this.moderator", this.moderator)
+             // console.log(" this.moderatorOrg", this.moderatorOrg)
             },
             err1 => {
               console.log(err1, 'error in search roles')
@@ -106,8 +109,8 @@ export class RoleMaintenanceComponent implements OnInit {
       }
       if (!this.inLoggedUserIsModerator) {
         //update user
-        if (this.moderator !== this.moderatorOrg) {
-          this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
+        //if (this.moderator !== this.moderatorOrg) {
+            this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
             res => {
               console.log(this.body);
               console.log("res", res.message)
@@ -118,15 +121,16 @@ export class RoleMaintenanceComponent implements OnInit {
               console.log(err, 'error in update')
             }
           )
-        }
+        //}
       }
 
     }
 
     if (this.inLoggedUserIsModerator && !this.inLoggedUserIsAmin) {
       console.log(this.moderatorBlocked)
+      console.log(this.moderatorBlockedOrg);      
       this.body = { "moderatorBlocked": this.moderatorBlocked }
-      if (this.moderatorBlocked !== this.moderatorBlockedOrg) {
+      //if (this.moderatorBlocked !== this.moderatorBlockedOrg) {
         this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
           res => {
             Swal.fire("Success", "Update successfully", "success")
@@ -136,14 +140,14 @@ export class RoleMaintenanceComponent implements OnInit {
             console.log(err, 'error in update')
           }
         )
-      }
+     // }  
     }
 
     if (this.inLoggedUserIsModerator && this.inLoggedUserIsAmin) {
       this.body = { "roles": this.roles, "moderatorBlocked": this.moderatorBlocked }
       console.log(this.body);
-      if (this.moderatorBlocked !== this.moderatorBlockedOrg || this.moderator !== this.moderatorOrg) {
-        this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
+     // if (this.moderatorBlocked !== this.moderatorBlockedOrg || this.moderator !== this.moderatorOrg) {
+         this._searchUser.updateUserById(this.users[0]._id, this.body).subscribe(
           res => {
             Swal.fire("Success", "Update successfully", "success")
           },
@@ -152,9 +156,24 @@ export class RoleMaintenanceComponent implements OnInit {
             console.log(err, 'error in update')
           }
         )
-      }
+     // }
     }
-    this.onSearch()
+
+    for (let i = 0; i < this.roles.length; i++) {
+      this._searchUser.getRoleById(this.roles[i]).subscribe(
+        res1 => {
+          if (res1.name === "moderator") {
+            this.moderator = true
+            // this.moderatorOrg = true
+          }
+          console.log(" this.moderator", this.moderator)
+          // console.log(" this.moderatorOrg", this.moderatorOrg)
+        },
+        err1 => {
+          console.log(err1, 'error in search roles')
+        }
+      )
+    }
   }
 
 }
