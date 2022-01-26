@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { RegisterUserService } from 'src/app/services/register-user.service';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,11 @@ export class RegisterComponent implements OnInit {
   wasAnError!: boolean;
 
 
-  constructor(private _registerUser: RegisterUserService, public dialog: MatDialog) { }
+  constructor(
+    private _registerUser: RegisterUserService,
+    public dialog: MatDialog,
+    private _router: Router
+) { }
 
   ngOnInit(): void {
   }
@@ -41,6 +46,7 @@ export class RegisterComponent implements OnInit {
       res => {
         this.wasAnError = false;
         this.dialog.closeAll();
+        this._router.navigate(['/']);
         Swal.fire("Success", "Register successfully", "success")
         console.log(res)
       },

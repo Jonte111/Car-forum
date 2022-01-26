@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -17,8 +18,11 @@ export class SignInComponent implements OnInit {
   inLoggedUserIsAmin!: boolean;
   inLoggedUserIsModerator!: boolean;
 
-  constructor(private _auth: AuthService,
-    public dialog: MatDialog) { }
+  constructor(
+    private _auth: AuthService,
+    public dialog: MatDialog,
+    private _router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -45,6 +49,7 @@ export class SignInComponent implements OnInit {
         this.saveRole()
         //Closes open modals
         this.dialog.closeAll();
+        this._router.navigate(['/']);
       },
       err => { 
         this.wasAnError = true;
