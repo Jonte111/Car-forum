@@ -1,4 +1,7 @@
-<mat-card>
+<mat-card> 
+  <button mat-icon-button aria-label="close dialog" class="close-icon" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
   <mat-card-title>Create thread</mat-card-title>
   <form class="create-thread-form" (keydown.enter)="$event.preventDefault()">
     <mat-form-field appearance="outline" class="form-control">

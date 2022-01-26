@@ -29,8 +29,8 @@ export class ForumComponent implements OnInit {
   }
   openCreateThread() {
     const dialog = this.dialog.open(CreateThreadComponent, {
-      data: this.categoryId
-    }
+      data: this.categoryId, panelClass: ["my-dialog"]
+    }, 
     );
     dialog.afterClosed().subscribe(() => {
       this.getThreads(this.categoryId);
