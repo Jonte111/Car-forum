@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-in',
@@ -55,6 +56,10 @@ export class SignInComponent implements OnInit {
         this.wasAnError = true;
         this.errorMessage = err.error.message;
         console.log(err, ' errror in sign-in')
+        if (err.status == 403) {
+          this.dialog.closeAll();
+          Swal.fire('error', "You account has been blocked. If you want to delete it contact us at car-admin@car.com", 'error')
+        }
       }
     )
     this.username = "";
