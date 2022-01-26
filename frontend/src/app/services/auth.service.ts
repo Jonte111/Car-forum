@@ -68,14 +68,21 @@ export class AuthService {
   }
 
   isModerator() {
-    console.log("moderator", localStorage.getItem('inLoggedUserIsModerator'));
-    
     return localStorage.getItem('inLoggedUserIsModerator') === "true";
   }
 
   isAdmin() {
     return localStorage.getItem('inLoggedUserIsAmin') === "true";
-
+  }
+  hasRole() {
+    if (
+      localStorage.getItem('inLoggedUserIsModerator') === "true" ||
+      localStorage.getItem('inLoggedUserIsAmin') === "true"
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
