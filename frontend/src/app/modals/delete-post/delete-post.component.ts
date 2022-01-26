@@ -12,6 +12,7 @@ export class DeletePostComponent implements OnInit {
 
   public posts: any = [];
   userId!: string;
+  threadTitle!: string;
 
   constructor(
     public dialog: MatDialog,
@@ -31,8 +32,8 @@ export class DeletePostComponent implements OnInit {
         if (this.posts.length === 0) {
           Swal.fire('info', "You don't have any post", 'info')
           this.dialog.closeAll();
-        }
-        console.log(this.posts, " this.threads get threads")
+        }  
+        console.log(this.posts, " this.threads get posts")
       }
     );
   }

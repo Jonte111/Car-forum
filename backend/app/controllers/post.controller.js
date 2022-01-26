@@ -103,10 +103,10 @@ exports.delete = (req, res) => {
 exports.getMyPosts = (req, res) => {
     Post.find({
         creator: req.params.id
-    })
+    }).populate('threadId')
         .then(data => {
             res.send(data);
-        })
+        })        
         .catch(err => {
             res.status(500).send({
                 message: err.message

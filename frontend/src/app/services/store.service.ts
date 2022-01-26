@@ -65,6 +65,7 @@ export class StoreService {
 
   getThreadById(threadId: string) {
     let urlToGetThreadByIdWithId = this.urlToGetThreadById + threadId;
+    console.log("threadId", threadId)
     console.log(urlToGetThreadByIdWithId)
     return this.http.get(urlToGetThreadByIdWithId)
   }
