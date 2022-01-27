@@ -5,23 +5,21 @@ import { StoreService } from 'src/app/services/store.service';
 @Component({
   selector: 'app-create-thread',
   templateUrl: './create-thread.component.html',
-  styleUrls: ['./create-thread.component.css']
+  styleUrls: ['./create-thread.component.css'],
 })
 export class CreateThreadComponent implements OnInit {
   title!: string;
   firstPost!: string;
-  
+
   constructor(
     public _store: StoreService,
     @Inject(MAT_DIALOG_DATA) public categoryId: any,
-    public dialog: MatDialog,
-  ) { }
+    public dialog: MatDialog
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onCreateThread() {
-    console.log(this.categoryId, " categoryId")
     if (!this.title || !this.firstPost) {
       return;
     }
@@ -30,11 +28,10 @@ export class CreateThreadComponent implements OnInit {
       title: this.title,
       category: this.categoryId,
       firstPost: this.firstPost,
-      threadStarterUsername: localStorage.getItem('username')
-    }
-    
+      threadStarterUsername: localStorage.getItem('username'),
+    };
+
     this._store.createThread(createdThreadInformation);
     this.dialog.closeAll();
   }
-
 }

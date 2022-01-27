@@ -45,8 +45,8 @@ exports.findAll = (req, res) => {
 
 exports.findOneThread = (req, res) => {
   Thread.findById(req.params.id, (err, data) => {
-    if(err) {
-      if(err.kind === "not_found") {
+    if (err) {
+      if (err.kind === "not_found") {
         res.status(400).send({
           message: `Not found Thread with id ${req.params.id}.`
         });
@@ -125,16 +125,16 @@ exports.delete = (req, res) => {
             }
           } else {
             Thread.find({
-              threadStarter: req.body.threadStarter
-            })
-            .then(data => {
-              res.send(data);
-            })
-            .catch(err => {
-              res.status(500).send({
-                message: err.message
+                threadStarter: req.body.threadStarter
               })
-            })
+              .then(data => {
+                res.send(data);
+              })
+              .catch(err => {
+                res.status(500).send({
+                  message: err.message
+                })
+              })
           }
         });
 
@@ -146,28 +146,32 @@ exports.delete = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  if(!req.body) {
+  if (!req.body) {
     return res.status(400).send({
-       message: "Data to update can not be empty!"
+      message: "Data to update can not be empty!"
     });
   }
 
   const id = req.params.id;
 
-  Thread.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-  .then(data => {
-    if(!data) {
-      res.status(404).send({
-        message: `Cannot update Thread with id=${id}. Maybe Thread was not found!`
+  Thread.findByIdAndUpdate(id, req.body, {
+      useFindAndModify: false
+    })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot update Thread with id=${id}. Maybe Thread was not found!`
+        });
+      } else {
+        res.send({
+          message: "Thread was updated successfully."
+        })
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating Thread with id=" + id
       });
-    } else {
-      res.send({  message: "Thread was updated successfully."  })
-    }
-  })
-  .catch(err => {
-    res.status(500).send({
-      message: "Error updating Thread with id=" + id
     });
-  });
 
 };

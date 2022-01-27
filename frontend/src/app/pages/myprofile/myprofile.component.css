@@ -1,4 +1,4 @@
-.my-profile-container{
+.my-profile-container {
   display: grid;
   width: 100%;
   grid-template-columns: 1fr;
@@ -7,19 +7,17 @@
   margin: 10px;
 }
 
-.myProfile-card{
-  display:grid;
+.myProfile-card {
+  display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
   border: 2px solid silver;
   border-radius: 5px;
-  width:300px;
-  margin: 10px;  
+  width: 300px;
+  margin: 10px;
 }
 
-.delete-button{
+.delete-button {
   margin-bottom: 15px;
-  width:150px;
+  width: 150px;
 }
-
-

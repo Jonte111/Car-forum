@@ -2,9 +2,9 @@ const config = require("../config/auth.config");
 const db = require("../models");
 const Post = db.post;
 
-exports.createPost = (req, res ) => {
+exports.createPost = (req, res) => {
     // Validable request
-    if(!req.body) {
+    if (!req.body) {
         res.status(400).send({
             message: "Content can not be empty"
         });
@@ -20,30 +20,13 @@ exports.createPost = (req, res ) => {
 
     // Save Post in the database
     Post.create(post, (err, data) => {
-        if(err)
-        res.status(500).send({
-            message:
-            err.message || "Some error occured while creating the Post."
-        });
+        if (err)
+            res.status(500).send({
+                message: err.message || "Some error occured while creating the Post."
+            });
         else res.send(data);
     });
 };
-
-/* exports.delete = (req, res) => {
-    Post.findByIdAndRemove(req.params.id, (err) => {
-        if(err) {
-            if(err.kind === "not_found") {
-                res.status(400).send({
-                    message: `Not found Post with id ${req.params.id}.`
-                });
-            } else {
-                res.status(500).send({
-                  message: "Could not delete Post with id " + req.params.id
-                });
-              }
-        } else res.send({ message: `Post was deleted successfully!` });
-    });
-}; */
 
 exports.delete = (req, res) => {
 
@@ -80,8 +63,8 @@ exports.delete = (req, res) => {
                         }
                     } else {
                         Post.find({
-                            creator: req.body.creator
-                        })
+                                creator: req.body.creator
+                            })
                             .then(data => {
                                 res.send(data);
                             })
@@ -102,11 +85,11 @@ exports.delete = (req, res) => {
 
 exports.getMyPosts = (req, res) => {
     Post.find({
-        creator: req.params.id
-    }).populate('threadId')
+            creator: req.params.id
+        }).populate('threadId')
         .then(data => {
             res.send(data);
-        })        
+        })
         .catch(err => {
             res.status(500).send({
                 message: err.message
@@ -116,8 +99,8 @@ exports.getMyPosts = (req, res) => {
 
 exports.findAllByThreadId = (req, res) => {
     Post.find({
-        threadId: req.params.id
-    })
+            threadId: req.params.id
+        })
         .then(data => {
             res.send(data);
         }).catch(err => {

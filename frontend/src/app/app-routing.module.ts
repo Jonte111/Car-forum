@@ -6,15 +6,15 @@ import { MyprofileComponent } from './pages/myprofile/myprofile.component';
 import { ThreadDetailComponent } from './pages/thread-detail/thread-detail.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'forum/:id', component: ForumComponent},
-  { path: 'forum/thread/:id', component: ThreadDetailComponent},
-  { path: 'myprofile', component: MyprofileComponent},
-  { path: 'myprofile', component: MyprofileComponent},
+  { path: '', component: HomeComponent },
+  { path: 'forum/:id', component: ForumComponent },
+  { path: 'forum/thread/:id', component: ThreadDetailComponent },
+  { path: 'myprofile', component: MyprofileComponent },
+  { path: 'myprofile', component: MyprofileComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -7,17 +7,14 @@ import { RoleMaintenanceComponent } from 'src/app/modals/role-maintenance/role-m
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  constructor(public dialog: MatDialog, public _authService: AuthService) {}
 
-  constructor(public dialog: MatDialog,
-    public _authService: AuthService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   openSignIn() {
-      this.dialog.open(SignInComponent);
+    this.dialog.open(SignInComponent);
   }
   openRegister() {
     this.dialog.open(RegisterComponent);

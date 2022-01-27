@@ -1,6 +1,6 @@
 const controller = require("../controllers/post.controller");
 
-module.exports = function(app) {
+module.exports = function (app) {
     app.use(function (req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, x-access-token, Content-Type, Accept");
@@ -12,7 +12,7 @@ module.exports = function(app) {
     app.delete("/api/post/delete/:id", controller.delete);
 
     //Get posts by threadId
-    app.get("/api/post/:id", controller.findAllByThreadId); 
+    app.get("/api/post/:id", controller.findAllByThreadId);
 
     app.get("/api/my-posts/:id", controller.getMyPosts)
 }

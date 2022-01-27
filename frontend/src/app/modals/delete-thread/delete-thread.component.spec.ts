@@ -7,9 +7,8 @@ describe('DeleteThreadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteThreadComponent ]
-    })
-    .compileComponents();
+      declarations: [DeleteThreadComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

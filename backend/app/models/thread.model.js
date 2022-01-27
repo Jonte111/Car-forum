@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-let current  = new Date();
-let timeStamp = new Date(Date.UTC(current.getFullYear(), 
-current.getMonth(),current.getDate(),current.getHours(), 
-current.getMinutes(),current.getSeconds(), current.getMilliseconds()));
+let current = new Date();
+let timeStamp = new Date(Date.UTC(current.getFullYear(),
+    current.getMonth(), current.getDate(), current.getHours(),
+    current.getMinutes(), current.getSeconds(), current.getMilliseconds()));
 
 const Thread = mongoose.model(
     "Thread",
@@ -14,7 +14,7 @@ const Thread = mongoose.model(
         },
         threadStarterUsername: {
             type: String,
-            required: true 
+            required: true
         },
         title: {
             type: String,
@@ -31,22 +31,18 @@ const Thread = mongoose.model(
         createdTime: {
             type: Date,
             default: timeStamp
-         
+
         },
-        blockedUsers: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "User",
-                default: []
-            }
-        ],
-        posts: [
-            {
+        blockedUsers: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            default: []
+        }],
+        posts: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "Post",
             default: []
-            }
-        ],
+        }],
         adminLocked: {
             type: Boolean,
             default: false

@@ -24,12 +24,10 @@ const User = mongoose.model(
             type: Boolean,
             default: false
         },
-        roles: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Role"
-            }
-        ]
+        roles: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Role"
+        }]
     })
 );
 

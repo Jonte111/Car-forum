@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent implements OnInit {
   username!: string;
@@ -23,77 +23,64 @@ export class SignInComponent implements OnInit {
     private _auth: AuthService,
     public dialog: MatDialog,
     private _router: Router
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSignIn() {
-    
-    if (!this.username||!this.password) {
+    if (!this.username || !this.password) {
       return;
     }
     const userToBeSignedIn = {
-        username: this.username,
-        password: this.password
-     }
-    
-    //Calls on signInUser in authService
+      username: this.username,
+      password: this.password,
+    };
+
     this._auth.signInUser(userToBeSignedIn).subscribe(
-      res => {
-        //Token and username is stored in localStorage
-        console.log(res)
+      (res) => {
         localStorage.setItem('token', res.accessToken);
         localStorage.setItem('username', res.username);
         localStorage.setItem('id', res.id);
-        console.log(res.accessToken)
-        this.saveRole()
-        //Closes open modals
+
+        this.saveRole();
+
         this.dialog.closeAll();
         this._router.navigate(['/']);
       },
-      err => { 
+      (err) => {
         this.wasAnError = true;
         this.errorMessage = err.error.message;
-        console.log(err, ' errror in sign-in')
+
         if (err.status == 403) {
           this.dialog.closeAll();
-          Swal.fire('error', "You account has been blocked. If you want to delete it contact us at car-admin@car.com", 'error')
+          Swal.fire(
+            'error',
+            'You account has been blocked. If you want to delete it contact us at car-admin@car.com',
+            'error'
+          );
         }
       }
-    )
-    this.username = "";
-    this.password = "";
+    );
+    this.username = '';
+    this.password = '';
   }
 
   saveRole() {
-    localStorage.setItem('inLoggedUserIsModerator', "false");
-    localStorage.setItem('inLoggedUserIsAmin', "false");
-    this.inLoggedUser = localStorage.getItem('username') || "";
-    this._auth.getUserByUserName(this.inLoggedUser).subscribe(
-      res => {        
-        this.inLoggedUserRoleId = res[0].roles;
-        for (let i = 0; i < this.inLoggedUserRoleId.length; i++) {
-          this._auth.getRoleById(this.inLoggedUserRoleId[i]).subscribe(
-            res1 => {
-              if (res1.name === "moderator") {
-                localStorage["inLoggedUserIsModerator"] = "true";
-                // localStorage.setItem('inLoggedUserIsModerator', "true");
-              }
-              if (res1.name === "admin") {
-                localStorage["inLoggedUserIsAmin"] = "true";
-                // localStorage.setItem('inLoggedUserIsAmin', "true");
-              }
-            },
-            err1 => {
-              console.log(err1, 'error in search roles')
-            }
-          )
-        }
-      },
-      err => {
-        console.log(err, 'error in search roles')
+    localStorage.setItem('inLoggedUserIsModerator', 'false');
+    localStorage.setItem('inLoggedUserIsAmin', 'false');
+    this.inLoggedUser = localStorage.getItem('username') || '';
+    this._auth.getUserByUserName(this.inLoggedUser).subscribe((res) => {
+      this.inLoggedUserRoleId = res[0].roles;
+      for (let i = 0; i < this.inLoggedUserRoleId.length; i++) {
+        this._auth.getRoleById(this.inLoggedUserRoleId[i]).subscribe((res1) => {
+          if (res1.name === 'moderator') {
+            localStorage['inLoggedUserIsModerator'] = 'true';
+          }
+          if (res1.name === 'admin') {
+            localStorage['inLoggedUserIsAmin'] = 'true';
+          }
+        });
       }
-    )
+    });
   }
 }

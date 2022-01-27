@@ -1,38 +1,47 @@
-<!-- <h2>You selected thread with id {{threadId}}</h2> -->
-
 <mat-card>
-  <mat-card-title>Thread title: {{threadTitle}}</mat-card-title>
-  <mat-card-title>Created by: {{threadStarterUsername}}</mat-card-title>
+  <mat-card-title>Thread title: {{ threadTitle }}</mat-card-title>
+  <mat-card-title>Created by: {{ threadStarterUsername }}</mat-card-title>
   <mat-card-content class="thread-cards">
     <mat-card class="thread-card">
-      <mat-card-title class="thread-card">Posted by: {{threadStarterUsername}}</mat-card-title>
+      <mat-card-title class="thread-card"
+        >Posted by: {{ threadStarterUsername }}</mat-card-title
+      >
       <mat-card-content>
-        {{firstPost}}
+        {{ firstPost }}
       </mat-card-content>
     </mat-card>
-  <!-- <a routerLink="/:id" class="route-link" > -->
-  <mat-card class="thread-card" *ngFor="let post of posts">
-      <mat-card-title>Posted by: {{post.username}}</mat-card-title>
-    <mat-card-content>{{post.postText}}
-      <!-- <h4>Last comment in thread:</h4> {{thread.posts[thread.posts.length-1]}} -->
-    </mat-card-content>
-  </mat-card>
-  <!-- </a> -->
 
-</mat-card-content>
-  <!-- -------------------Create post--------------------------- -->
+    <mat-card class="thread-card" *ngFor="let post of posts">
+      <mat-card-title>Posted by: {{ post.username }}</mat-card-title>
+      <mat-card-content>{{ post.postText }} </mat-card-content>
+    </mat-card>
+  </mat-card-content>
+
   <mat-card *ngIf="_authService.signedIn()">
     <mat-card-title>Create post</mat-card-title>
     <form class="create-post">
       <mat-form-field class="post-field" appearance="fill">
         <mat-label>Write your post</mat-label>
-        <textarea matInput placeholder="Ex. Volvo vs Tesla..." type="create-post" name="create-post" id="create-post"
-          required [(ngModel)]="createdPost"></textarea>
+        <textarea
+          matInput
+          placeholder="Ex. Volvo vs Tesla..."
+          type="create-post"
+          name="create-post"
+          id="create-post"
+          required
+          [(ngModel)]="createdPost"
+        ></textarea>
       </mat-form-field>
-      <br>
-      <button mat-raised-button class="create-button" type="submit" value="createPost"
-        (click)="createPost()">Create</button>
-
+      <br />
+      <button
+        mat-raised-button
+        class="create-button"
+        type="submit"
+        value="createPost"
+        (click)="createPost()"
+      >
+        Create
+      </button>
     </form>
   </mat-card>
 </mat-card>

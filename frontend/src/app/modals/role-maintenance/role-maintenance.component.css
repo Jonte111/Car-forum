@@ -1,38 +1,37 @@
 .listTitle {
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  margin-top: 1em;
 }
-.emailLable{
-    width:200px;
+.emailLable {
+  width: 200px;
 }
-.userNameLable{
-    width:150px;
+.userNameLable {
+  width: 150px;
 }
 .userList {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1em;
 }
-.user{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(196, 196, 196, 0.1);
-    border-radius: 5px;
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(196, 196, 196, 0.1);
+  border-radius: 5px;
 }
 
-.close-icon{
+.close-icon {
   position: absolute;
-  top:3px;
+  top: 3px;
   right: 3px;
   padding: 5px;
-  color:red;
+  color: red;
   line-height: 5px;
   min-width: auto;
   justify-self: right;
 }
-

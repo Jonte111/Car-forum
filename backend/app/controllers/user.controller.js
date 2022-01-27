@@ -8,7 +8,7 @@ exports.allAccess = (req, res) => {
 };
 
 exports.userBoard = (req, res) => {
-        res.status(200).send("User Content.");
+    res.status(200).send("User Content.");
 };
 
 exports.adminBoard = (req, res) => {
@@ -30,14 +30,12 @@ exports.getUserById = async (req, res) => {
     res.json(data)
 }
 
-/* exports.getUserByUserName = async (req, res) => {
-    const username = req.params.username;
-    let data = await User.find({ username: username })
-    res.json(data)
-} */
+
 
 exports.getUserByUserName = (req, res) => {
-    User.find({ username: req.params.username }, (err, data) => {
+    User.find({
+        username: req.params.username
+    }, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({

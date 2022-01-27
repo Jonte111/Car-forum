@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ThreadDetailComponent } from './thread-detail.component';
 
 describe('ThreadDetailComponent', () => {
@@ -8,9 +7,8 @@ describe('ThreadDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThreadDetailComponent ]
-    })
-    .compileComponents();
+      declarations: [ThreadDetailComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

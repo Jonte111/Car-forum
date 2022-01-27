@@ -1,17 +1,13 @@
-.card-container{
+.card-container {
   display: grid;
   grid-template-columns: 1fr;
   max-width: 90%;
   justify-items: center;
- column-gap: 10px;
+  column-gap: 10px;
   margin: 10px;
-
 }
-/* .sub-forum{
-justify-items: center;
-} */
 
-.my-profile-container{
+.my-profile-container {
   display: grid;
   width: 100%;
   grid-template-columns: 1fr;
@@ -26,15 +22,19 @@ justify-items: center;
 .thread-card:hover {
   cursor: pointer;
 }
-.create-thread-button{
+.create-thread-button {
   margin-bottom: 15px;
 }
 
-.route-link{
+.route-link {
   text-decoration: none;
 }
 
-.outer-thread-card{
+.outer-thread-card {
   background-color: rgb(155, 155, 155);
   margin-bottom: 10px;
 }
+
+
+
+

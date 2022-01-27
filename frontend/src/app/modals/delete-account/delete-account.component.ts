@@ -7,57 +7,46 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-delete-account',
   templateUrl: './delete-account.component.html',
-  styleUrls: ['./delete-account.component.css']
+  styleUrls: ['./delete-account.component.css'],
 })
 export class DeleteAccountComponent implements OnInit {
-  
   password!: string;
-  private _deleteAccountUrl = "/api/users/" + localStorage.getItem('id');
+  private _deleteAccountUrl = '/api/users/' + localStorage.getItem('id');
   status!: string;
   message!: string;
 
-  constructor(private http: HttpClient,
+  constructor(
+    private http: HttpClient,
     public dialog: MatDialog,
-    private _router: Router) { }
+    private _router: Router
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onDeleteAccount() {
     if (!this.password) {
       return;
     }
-    console.log(this.password, this._deleteAccountUrl," credentials to delete account");
-    
-    
+
     const deletAccountCredentials = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
       body: {
-        password: this.password
+        password: this.password,
       },
     };
 
-    this.http
-      .delete(this._deleteAccountUrl, deletAccountCredentials)
-      .subscribe(
-        res => {
-          console.log('HTTP response', res);
-          localStorage.clear();
-          this.dialog.closeAll();
-          this._router.navigate(['/']);
-          Swal.fire("Success", "Account deleted", "success");
-        },
-        err => {
-          console.log('HTTP Error', err);
-          this.message = 'Wrong password';
-        },
-        () => console.log('HTTP request completed.')
-      );
+    this.http.delete(this._deleteAccountUrl, deletAccountCredentials).subscribe(
+      (res) => {
+        localStorage.clear();
+        this.dialog.closeAll();
+        this._router.navigate(['/']);
+        Swal.fire('Success', 'Account deleted', 'success');
+      },
+      (err) => {
+        this.message = 'Wrong password';
+      }
+    );
   }
-
-/*   onClose() {
-      this.dialog.closeAll()
-  } */
 }

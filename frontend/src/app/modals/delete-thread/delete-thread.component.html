@@ -1,26 +1,34 @@
-
-<div class="my-profile-container">   
-  <button mat-icon-button aria-label="close dialog" class="close-icon" mat-dialog-close>
+<div class="my-profile-container">
+  <button
+    mat-icon-button
+    aria-label="close dialog"
+    class="close-icon"
+    mat-dialog-close
+  >
     <mat-icon>close</mat-icon>
   </button>
   <mat-card-content class="thread-cards">
     <mat-card-header>
       <mat-card-title>Your created threads</mat-card-title>
     </mat-card-header>
-    <!-- <a routerLink="/:id" class="route-link" > -->
+
     <mat-card *ngFor="let thread of threads" class="outer-thread-card">
-      <mat-card (click)="onSelect(thread)" class="thread-card">
+      <mat-card class="thread-card">
         <mat-card-title-group>
-          <mat-card-title>{{thread.title}}</mat-card-title>
-          <!-- <mat-card-subtitle>Small</mat-card-subtitle> -->
+          <mat-card-title>{{ thread.title }}</mat-card-title>
         </mat-card-title-group>
         <mat-card-content>
-          <h4>First post in thread:</h4> {{thread.firstPost}}
+          <h4>First post in thread:</h4>
+          {{ thread.firstPost }}
         </mat-card-content>
       </mat-card>
-      <button mat-raised-button color="warn" (click)="onDeleteThread(thread._id)">Delete</button>
-    </mat-card>    
-    <!-- </a> -->
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="onDeleteThread(thread._id)"
+      >
+        Delete
+      </button>
+    </mat-card>
   </mat-card-content>
-
 </div>
